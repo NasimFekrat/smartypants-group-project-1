@@ -1,1 +1,1 @@
-# smartypants-group-project-1
+# gif-tastic
