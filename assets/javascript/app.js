@@ -12,5 +12,6 @@ $(document).ready(function(){
 
     var database = firebase.database();
     
+    // test line for jessa
 
 }); // end of docready function
