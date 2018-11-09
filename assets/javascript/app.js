@@ -1,4 +1,6 @@
 $(document).ready(function(){
+     
+
     
     // connection to our firebase database
     var config = {
@@ -11,6 +13,10 @@ $(document).ready(function(){
     firebase.initializeApp(config);
 
     var database = firebase.database();
+
+    //api key for openweathernetwork
+    var APIKey = "2aacadc69f5b8add90497de8f4f7fc24";
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + "q=Toronto,Canada&units=imperial&appid=" + APIKey;
     
 
 }); // end of docready function
