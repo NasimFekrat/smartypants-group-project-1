@@ -28,6 +28,9 @@ $(document).ready(function(){
 
         // Log the resulting object
         console.log(response);
-      });    
+      });
+
+      //google maps implementation
+      
 
 }); // end of docready function
