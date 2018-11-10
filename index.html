@@ -30,6 +30,34 @@
 <body>
 
     <h2>where the coffee at</h2>
+    <div id="coffeeMap"></div>
+
+    <style>
+    #coffeeMap {
+        height: 400px;
+        width: 100%;
+    }
+
+    </style>
+
+
+    <script>
+        function initMap() {
+           var myhalCoords = {lat:43.660781, lng: -79.396785}; //coordinates of the myhal building
+
+           var options = {
+               zoom: 6,
+               center: myhalCoords
+           } 
+           
+           //map object
+           var map = new google.maps.Map(document.getElementById('coffeeMap'), options);
+        }
+    </script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeoFR81vmO8h3Ztjlkk5BPho1VWBy_fcQ&callback=initMap">
+    </script>
     
 </body>
 </html>
