@@ -30,7 +30,7 @@
 <body>
 
     <h2>where the coffee at</h2>
-    <div id="coffeeMap"></div>
+    <div id="coffee-map"></div>
 
     <script>
         function initMap() {
@@ -43,11 +43,20 @@
            } 
            
            //map object
-           var coffeeMap = new google.maps.Map(document.getElementById('coffeeMap'), options);
+           var coffeeMap = new google.maps.Map(document.getElementById('coffee-map'), options);
         
            var marker = new google.maps.Marker({
                position: myhalCoords,
-               map: coffeeMap
+               map: coffeeMap,
+               icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+           });
+
+           var infoBubble = new google.maps.InfoWindow({ //a bubble with h2 text inside
+               content: '<h3>Myhal Building</h3>'
+           })
+
+           marker.addListener('click', function(){ //a click function on the "marker" var in the coffeeMap object, which opens the "infoBubble" var
+               infoBubble.open(coffeeMap, marker);
            });
         }
     </script>
