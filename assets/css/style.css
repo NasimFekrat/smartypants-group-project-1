@@ -1,3 +1,4 @@
+
 /*
 colors:
 yellow: (255,205,45) = #FFCD34
@@ -17,4 +18,11 @@ dark orange:(236,112,22) = #EC7016
 .imgNav{
     width: 100px;
     height: 100px;
+}
+.container {
+    border: 1px solid red;
+}
+
+.weatherapp {
+    border: 1px solid blue;
 }
