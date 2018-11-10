@@ -1,6 +1,4 @@
 $(document).ready(function(){
-     
-
     
     // connection to our firebase database
     var config = {
