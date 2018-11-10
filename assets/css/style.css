@@ -1,3 +1,11 @@
+body {
+    background: #351C00;
+}
+
+h2 {
+    color: antiquewhite
+}
+
 #coffeeMap {
     height: 500px;
     width: 60%;

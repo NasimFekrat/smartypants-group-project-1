@@ -35,14 +35,20 @@
     <script>
         function initMap() {
            var myhalCoords = {lat:43.660781, lng: -79.396785}; //coordinates of the myhal building
-
+            
+           //map options
            var options = {
                zoom: 17,
                center: myhalCoords
            } 
            
            //map object
-           var map = new google.maps.Map(document.getElementById('coffeeMap'), options);
+           var coffeeMap = new google.maps.Map(document.getElementById('coffeeMap'), options);
+        
+           var marker = new google.maps.Marker({
+               position: myhalCoords,
+               map: coffeeMap
+           });
         }
     </script>
 
