@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    
 
     // connection to our firebase database
     var config = {
@@ -6,12 +7,9 @@ $(document).ready(function(){
         authDomain: "coffee-finder-app.firebaseapp.com",
         databaseURL: "https://coffee-finder-app.firebaseio.com/", 
         storageBucket: "coffee-finder-app.appspot.com"
-    };
-
+      };
+  
     firebase.initializeApp(config);
-
-    //test our js file is loading:
-    console.log("Hello, Newman");
 
     var database = firebase.database();
 
@@ -114,12 +112,13 @@ $(document).ready(function(){
 
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + "q=Toronto,Canada&units=metric&appid=" + APIKey;
 
-    $.ajax({
-        url: queryURL,
-        method: "GET"
+     $.ajax({
+      url: queryURL,
+      method: "GET"
     })
-    // We store all of the retrieved data inside of an object called "response"
-    .then(function(response) {
+      // We store all of the retrieved data inside of an object called "response"
+      .then(function(response) {
+
 
     // Log the queryURL
     console.log(queryURL);
@@ -143,5 +142,4 @@ $(document).ready(function(){
     $(".display").attr("src" , iconurl);
     });
     
-});    
- // end of docready function
+});
