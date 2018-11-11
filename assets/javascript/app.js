@@ -16,6 +16,101 @@ $(document).ready(function(){
 
     //api key for openweathernetwork
     var APIKey = "2aacadc69f5b8add90497de8f4f7fc24";
+
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + "q=Toronto,Canada&units=imperial&appid=" + APIKey;
+    
+    // Initial Values
+    var inputCoffeeFetcher;
+    var inputCoffeeReceiver;
+    var inputCoffeeOrder;
+    var inputDestination;
+
+
+// Button to add Coffee Fetchers
+$(".fetcher-button").on("click", function(event) {
+    event.preventDefault();
+
+
+// Grabs user input
+inputCoffeeFetcher = $("#coffee-fetcher").val().trim();
+inputDestination =$("#coffee-destination").val().trim();
+
+// Creates local "temporary" object for holding Coffee Receiver data
+
+  var coffeeFetcherInputs = {
+
+    coffeeFetcher : inputCoffeeFetcher,
+    destination : inputDestination,
+
+  };
+
+  // Uploads New Input data to the database
+
+database.ref().push(coffeeFetcherInputs);
+    console.log(coffeeFetcherInputs.name);
+
+$("coffee-fetcher").val("");
+$("coffee-destination").val("");
+
+
+});
+
+
+
+// Button to add Coffee Receivers
+$(".receiver-button").on("click", function(event) {
+    event.preventDefault();
+
+
+// Grabs user input
+inputCoffeeReceiver =$("#coffee-receiver").val().trim();
+inputCoffeeOrder = $("#coffee-order").val().trim();
+
+
+// Creates local "temporary" object for holding Coffee Receiver data
+
+var coffeeReceiverInputs = {
+
+    coffeeReceiver : inputCoffeeReceiver,
+    coffeeOrder : inputCoffeeOrder,
+
+  };
+
+  // Uploads New Input data to the database
+
+database.ref().push(coffeeReceiverInputs);
+    console.log(coffeeReceiverInputs.name);
+
+$("coffee-fetcher").val("");
+$("coffee-destination").val("");
+
+});
+
+
+// 3. Create Firebase event for adding Coffee Receiver and Fetcher Inputs to the database and a row in the html when a user adds an entry
+
+database.ref().on("child_added", function(childSnapshot) {
+    console.log(childSnapshot.val());
+  
+    // Store everything into a variable.
+     inputCoffeeFetcher = childSnapshot.val().coffeeFetcher;
+     inputCoffeeReceiver = childSnapshot.val().coffeeReceiver;
+     inputDestination = childSnapshot.val().destination;
+     inputCoffeeOrder = childSnapshot.val().coffeeOrder;
+
+
+     var newRow = $("<tr>").append(
+        $("<td>").text(inputCoffeeFetcher),
+        $("<td>").text(inputCoffeeReceiver),
+        $("<td>").text(inputCoffeeOrder),
+        $("<td>").text(inputDestination),
+    )
+
+    $(".table >tbody").append(newRow);
+
+
+});
+
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + "q=Toronto,Canada&units=metric&appid=" + APIKey;
 
      $.ajax({
@@ -42,6 +137,7 @@ $(document).ready(function(){
         $(".weather").html(response.weather[0].description);
 
       });    
+
 
 
 }); // end of docready function
