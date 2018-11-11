@@ -55,7 +55,6 @@ $(document).ready(function(){
     });
 
 
-
     // Button to add Coffee Receivers
     $(".receiver-button").on("click", function(event) {
         event.preventDefault();

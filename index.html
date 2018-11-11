@@ -36,13 +36,15 @@
     <nav class="navbar mb-3">
         <span class="navbar-brand mx-auto"><img src="assets/images/coffeeCup.png" class="imgNav"> Fetch</span>
     </nav>
-
-
-    <div id="coffee-map" class="rounded-circle mx-auto"></div>
-
-
-    <!--weather display-->
+    <!-- starting point -->
     <div class="container">
+        <div class="row centerImg m-0 p-0">
+            <button class="btn btn-lg discoverBtn m-auto p-3">Discover Coffee Houses <br/> Near You</button>    
+        </div>
+        <!--weather display-->
+        <div class="row">
+            <div class="col-sm-12" id="coffee-map"></div>
+        </div>
         <div class="row rounded weatherapp">
             <div class="col-sm-4"><img class="display"></div>
             <div class="col-sm-8 my-3">
@@ -51,57 +53,52 @@
                 <p class="weather m-0"></p>
             </div>
         </div>
-    </div>  
-
-    <!--fetcher form display-->
-    <div class="container">
-        <form>
-            <div class="form-group">
-                <label for="coffee-fetcher">Fetcher</label>
-                <input type="text" class="form-control" id="coffee-fetcher" placeholder="Fetcher">
-            </div>
-            <div class="form-group">
-                <label for="coffee-destination">Coffee Shop</label>
-                <input type="text" class="form-control" id="coffee-destination" placeholder="Coffee Shop">
-            </div>
-            <input class="btn btn-primary fetcher-button" type="submit" value="Submit">
-        </form>
+        <!--fetcher form display-->
+        <div class="row">
+            <form class="col-sm-12">
+                <div class="form-group">
+                    <label for="coffee-fetcher">Fetcher</label>
+                    <input type="text" class="form-control" id="coffee-fetcher" placeholder="Fetcher">
+                </div>
+                <div class="form-group">
+                    <label for="coffee-destination">Coffee Shop</label>
+                    <input type="text" class="form-control" id="coffee-destination" placeholder="Coffee Shop">
+                </div>
+                <input class="btn btn-primary fetcher-button" type="submit" value="Submit">
+            </form>
+        </div>
+        <!--receiver form display-->
+        <div class="row">
+            <form class="col-sm-12">
+                <div class="form-group">
+                    <label for="coffee-receiver">Name</label>
+                    <input type="text" class="form-control" id="coffee-receiver" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <label for="coffee-order">Order and Instructions</label>
+                    <textarea class="form-control" id="coffee-order" rows="3"></textarea>
+                </div>
+                <input class="btn btn-primary receiver-button" type="submit" value="Submit">
+            </form>
+        </div>
+        <!--timer field-->
+        <div class="row">
+            <p>Timer</p>
+            <!-- New Orders  -->
+            <div class="col-sm-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Order</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>    
+        </div>    
     </div>
-    
-    <!--receiver form display-->
-    <div class="container">
-        <form>
-            <div class="form-group">
-                <label for="coffee-receiver">Name</label>
-                <input type="text" class="form-control" id="coffee-receiver" placeholder="Name">
-            </div>
-            <div class="form-group">
-                <label for="coffee-order">Order and Instructions</label>
-                <textarea class="form-control" id="coffee-order" rows="3"></textarea>
-            </div>
-            <input class="btn btn-primary receiver-button" type="submit" value="Submit">
-        </form>
-    </div>
-
-    <!--timer field-->
-    <div class="container">
-        <p>Timer</p>
-    </div>
-    
-    <!-- New Orders  -->
-    <div class="container">
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Order</th>
-              </tr>
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
-    </div>
-
 <!-- javascript that bugs out when moved into app.js-->
 <script>
     function initMap() {
@@ -167,9 +164,7 @@
         }
 
     } //end of initMap
-
 </script>
-
 <!-- Google Maps link-->
 <script asych defer 
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeoFR81vmO8h3Ztjlkk5BPho1VWBy_fcQ&callback=initMap">
