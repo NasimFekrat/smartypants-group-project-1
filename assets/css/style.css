@@ -1,4 +1,3 @@
-
 /*
 colors:
 yellow: (255,205,45) = #FFCD34
@@ -13,6 +12,13 @@ font-family: 'Monoton', cursive;
 body{
     background-color: #39302A;
 }
+
+#coffee-map {
+    align-content: center;
+    height: 500px;
+    width: 40%;
+}
+
 .container{
     background-color: rgb(223, 194, 173);
     color: #39302A;
