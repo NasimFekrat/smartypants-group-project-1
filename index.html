@@ -25,36 +25,29 @@
    <!-- Firebase Link -->
    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 
+   <!-- brand Font -->
+   <link href="https://fonts.googleapis.com/css?family=Monoton|Roboto:700" rel="stylesheet">
+
 
 </head>
-<body>
 
-        <body> 
-                <!-- As a heading -->
-                <nav class="navbar">
-                    <span class="navbar-brand"><img src="assets/images/coffeeCup.png" class="imgNav"> Fetch</span>
-                </nav>
-                <div class="conntainer">
-            
-                </div>
+<body> 
+    <!-- As a heading -->
+    <nav class="navbar">
+        <span class="navbar-brand mx-auto"><img src="assets/images/coffeeCup.png" class="imgNav"> Fetch</span>
+    </nav>
 
     <!--weather display-->
     <div class="container">
-        <div class="container weatherapp">
-            <div class="row">
-                <div class="col-sm location"></div>
-            </div>
-            <div class="row">
-                <div class="col-sm temperature"></div>
-            </div>
-            <div class="row">
-                <div class="col-sm weather"></div>
-            </div>
-            <div class="row">
-                <div class="col-sm display"></div>
+        <div class="row rounded weatherapp">
+            <div class="col-sm-4"><img class="display"></div>
+            <div class="col-sm-8 my-3">
+                <p class="location m-0 h5"></p>
+                <p class="temperature m-0"></p>
+                <p class="weather m-0"></p>
             </div>
         </div>
-    </div>
+    </div>  
 
     <!--timer field-->
     <div class="container">
@@ -101,6 +94,5 @@
     <tbody>
     </tbody>
 </table>
-    
 </body>
 </html>
