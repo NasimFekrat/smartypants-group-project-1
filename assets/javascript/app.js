@@ -111,6 +111,27 @@ database.ref().on("child_added", function(childSnapshot) {
 
 });
 
+// create a function that removes the data from firebase and the html after and event happens- currently not working
+
+// var coffeeFetcherInputs = {
+
+//     coffeeFetcher : inputCoffeeFetcher,
+//     destination : inputDestination,
+
+//   };
+
+// const ref = firebase.database().ref("/-LR3hCDwtLUbHjca16xY");
+
+// return ref.orderByChild('coffeeFetcher').equalTo(coffeeFetcherInputs).once("value").then(function(emptySnapshot) {
+//   // get the key of the respective coffeeInputs
+//   const key = Object.keys(emptySnapshot.val())[0];
+
+//   // coffee Fetcher variable node from firebase
+//   ref.child(key).remove();
+// console.log("working");
+
+// });
+
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + "q=Toronto,Canada&units=metric&appid=" + APIKey;
 
      $.ajax({
