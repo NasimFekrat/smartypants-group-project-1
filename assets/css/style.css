@@ -1,3 +1,24 @@
+
+/*
+colors:
+yellow: (255,205,45) = #FFCD34
+gray:(57,48,42) = #39302A
+orange:(248,147,29) = #F8931D
+mat orange:(206,141,62) = #CE8D3E
+dark orange:(236,112,22) = #EC7016
+*/
+.navbar{
+    background-color: #FFCD34;
+    height: 100px;
+}
+.navbar-brand{
+    font-size: 50px;
+    color: #39302A;
+}
+.imgNav{
+    width: 100px;
+    height: 100px;
+}
 .container {
     border: 1px solid red;
 }
