@@ -141,5 +141,19 @@ $(document).ready(function(){
     $(".weather").html(response.weather[0].description);
     $(".display").attr("src" , iconurl);
     });
+
+
+    //google maps ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    var map;
+
+    function initialize() {
+        var center = new google.maps.LatLng(43.660781, -79.396785);
+        map = new google.maps.Map(document.getElementById('coffee-map'), {
+            center: center,
+            zoom: 15
+        });
+    }
+
+    initialize();
     
-});
+}); //end of docready function
