@@ -28,6 +28,70 @@
 
 </head>
 <body>
+
+    <!--weather display-->
+    <div class="container">
+        <div class="container weatherapp">
+            <div class="row">
+                <div class="col-sm location"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm temperature"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm weather"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm display"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--timer field-->
+    <div class="container">
+        <p>Timer</p>
+    </div>
+
+    <!--fetcher form display-->
+    <div class="container">
+        <form>
+            <div class="form-group">
+                <label for="coffee-fetcher">Fetcher</label>
+                <input type="text" class="form-control" id="coffee-fetcher" placeholder="Fetcher">
+            </div>
+            <div class="form-group">
+                <label for="coffee-destination">Coffee Shop</label>
+                <input type="text" class="form-control" id="coffee-destination" placeholder="Coffee Shop">
+            </div>
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </form>
+    </div>
+    
+    <!--receiver form display-->
+    <div class="container">
+        <form>
+            <div class="form-group">
+                <label for="coffee-receiver">Name</label>
+                <input type="text" class="form-control" id="coffee-receiver" placeholder="Name">
+            </div>
+            <div class="form-group">
+                <label for="coffee-order">Order and Instructions</label>
+                <textarea class="form-control" id="coffee-order" rows="3"></textarea>
+            </div>
+            <input class="btn btn-primary receiver-button" type="submit" value="Submit">
+        </form>
+    </div>
+<!-- New Orders  -->
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Order</th>
+    </tr>
+  </thead>
+    <tbody>
+    </tbody>
+</table>
     
 </body>
 </html>

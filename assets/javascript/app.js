@@ -16,6 +16,7 @@ $(document).ready(function(){
 
     //api key for openweathernetwork
     var APIKey = "2aacadc69f5b8add90497de8f4f7fc24";
+
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + "q=Toronto,Canada&units=imperial&appid=" + APIKey;
     
     // Initial Values
@@ -26,7 +27,7 @@ $(document).ready(function(){
 
 
 // Button to add Coffee Fetchers
-$("#coffeeFetcher-button").on("click", function(event) {
+$(".fetcher-button").on("click", function(event) {
     event.preventDefault();
 
 
@@ -36,17 +37,17 @@ inputDestination =$("#coffee-destination").val().trim();
 
 // Creates local "temporary" object for holding Coffee Receiver data
 
-  var CoffeeFetcherInputs = {
+  var coffeeFetcherInputs = {
 
-    CoffeeFetcher : inputCoffeeFetcher,
-    Destination : inputDestination,
+    coffeeFetcher : inputCoffeeFetcher,
+    destination : inputDestination,
 
   };
 
   // Uploads New Input data to the database
 
-database.ref().push(CoffeeFetcherInputs);
-    console.log(CoffeeFetcherInputs.name);
+database.ref().push(coffeeFetcherInputs);
+    console.log(coffeeFetcherInputs.name);
 
 $("coffee-fetcher").val("");
 $("coffee-destination").val("");
@@ -57,7 +58,7 @@ $("coffee-destination").val("");
 
 
 // Button to add Coffee Receivers
-$("#coffeeReceiver-button").on("click", function(event) {
+$(".receiver-button").on("click", function(event) {
     event.preventDefault();
 
 
@@ -68,17 +69,17 @@ inputCoffeeOrder = $("#coffee-order").val().trim();
 
 // Creates local "temporary" object for holding Coffee Receiver data
 
-var CoffeeReceiverInputs = {
+var coffeeReceiverInputs = {
 
-    CoffeeReceiver : inputCoffeeReceiver,
-    CoffeeOrder : inputCoffeeOrder,
+    coffeeReceiver : inputCoffeeReceiver,
+    coffeeOrder : inputCoffeeOrder,
 
   };
 
   // Uploads New Input data to the database
 
-database.ref().push(CoffeeReceiverInputs);
-    console.log(CoffeeReceiverInputs.name);
+database.ref().push(coffeeReceiverInputs);
+    console.log(coffeeReceiverInputs.name);
 
 $("coffee-fetcher").val("");
 $("coffee-destination").val("");
@@ -92,10 +93,10 @@ database.ref().on("child_added", function(childSnapshot) {
     console.log(childSnapshot.val());
   
     // Store everything into a variable.
-     inputCoffeeFetcher = childSnapshot.val().CoffeeFetcher;
-     inputCoffeeReceiver = childSnapshot.val().CoffeeReceiver;
-     inputDestination = childSnapshot.val().Destination;
-     inputCoffeeOrder = childSnapshot.val().CoffeeOrder;
+     inputCoffeeFetcher = childSnapshot.val().coffeeFetcher;
+     inputCoffeeReceiver = childSnapshot.val().coffeeReceiver;
+     inputDestination = childSnapshot.val().destination;
+     inputCoffeeOrder = childSnapshot.val().coffeeOrder;
 
 
      var newRow = $("<tr>").append(
@@ -105,9 +106,38 @@ database.ref().on("child_added", function(childSnapshot) {
         $("<td>").text(inputDestination),
     )
 
-    $("#trainTable >tbody").append(newRow);
+    $(".table >tbody").append(newRow);
 
 
 });
+
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + "q=Toronto,Canada&units=metric&appid=" + APIKey;
+
+     $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
+      // We store all of the retrieved data inside of an object called "response"
+      .then(function(response) {
+
+        // Log the queryURL
+        console.log(queryURL);
+
+        // Log the resulting object
+        console.log(response);
+
+        
+        //rounds temperature to interger
+        var temp = response.main.temp;
+        var roundedTemp = Math.round(temp);
+        console.log(roundedTemp);
+        
+        $(".location").html(response.name);
+        $(".temperature").html(roundedTemp + "&#8451;");
+        $(".weather").html(response.weather[0].description);
+
+      });    
+
+
 
 }); // end of docready function
