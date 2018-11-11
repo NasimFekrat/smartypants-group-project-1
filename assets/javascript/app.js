@@ -52,9 +52,30 @@ database.ref().push(coffeeFetcherInputs);
 $("coffee-fetcher").val("");
 $("coffee-destination").val("");
 
-
 });
 
+var count = 120;//start 120 seconds
+
+/*set the timer*/
+function setTimer(){
+    /*start timer*/
+    var timeSet = setInterval(function() {
+        
+        $('.timer').html("Time Remaining: " + count);
+        if(count !== 0){
+            count--;
+            $('.timer').html("Time Remaining: " + count);
+        }else{
+            /*end timer*/
+                clearInterval(timeSet);
+                $(".timer").empty();//clear main
+                /*end timer*/
+        }
+    }, 1000);
+    /*start timer*/       
+}    
+/*set the timer*/
+setTimer();
 
 
 // Button to add Coffee Receivers
@@ -130,7 +151,7 @@ database.ref().on("child_added", function(childSnapshot) {
         //rounds temperature to interger
         var temp = response.main.temp;
         var roundedTemp = Math.round(temp);
-        console.log(roundedTemp);
+        //console.log(roundedTemp);
 
         //display the icon
         var iconcode = response.weather[0].icon;
