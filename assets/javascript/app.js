@@ -152,6 +152,17 @@ $(document).ready(function(){
             center: center,
             zoom: 15
         });
+
+        var request = { // request-format & fields the google API needs for a successful query
+
+            location: center, //references our "center" var
+            radius: 1000,
+            types: ['cafe']
+        };
+
+        var service = new google.maps.places.PlacesService(map); // 'Places' is google's service with all the data(names, addresses, etc) on.... places
+    
+        service.nearbySearch(request, callback); //nearbySearch is a method in the places library, which accepts our 'request' var as an argument here
     }
 
     initialize();
