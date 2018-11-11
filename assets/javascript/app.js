@@ -32,9 +32,5 @@ $(document).ready(function(){
     // Log the resulting object
     console.log(response);
     });
-
-
-    //GOOGLE MAPS implementation - - - - - - - -
-    console.log("Hello, Jerry");
         
 }); // end of docready function
