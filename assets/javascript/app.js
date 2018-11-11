@@ -131,10 +131,15 @@ database.ref().on("child_added", function(childSnapshot) {
         var temp = response.main.temp;
         var roundedTemp = Math.round(temp);
         console.log(roundedTemp);
+
+        //display the icon
+        var iconcode = response.weather[0].icon;
+        var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
         
         $(".location").html(response.name);
         $(".temperature").html(roundedTemp + "&#8451;");
         $(".weather").html(response.weather[0].description);
+        $(".display").attr("src" , iconurl);
 
       });    
 
