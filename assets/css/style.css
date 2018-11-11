@@ -1,4 +1,51 @@
+/*
+colors:
+yellow: (255,205,45) = #FFCD34
+gray:(57,48,42) = #39302A
+light gray: rgb(149, 129, 115)
+orange:(248,147,29) = #F8931D
+mat orange:(206,141,62) = #CE8D3E
+dark orange:(236,112,22) = #EC7016
+font-family: 'Roboto', sans-serif;
+font-family: 'Monoton', cursive;
+*/
+body{
+    background-color: #39302A;
+}
+
 #coffee-map {
     height: 500px;
     width: 60%;
+}
+
+.container{
+    background-color: rgb(223, 194, 173);
+    color: #39302A;
+    font-family: 'Roboto', sans-serif;
+}
+.navbar{
+    background-color: #FFCD34;
+    height: 100px;
+}
+.navbar-brand{
+    font-size: 50px;
+    color: #39302A;
+    font-family: 'Monoton', cursive;
+}
+.imgNav{
+    width: 100px;
+    height: 100px;
+}
+.weatherapp {
+  background-image: url("..//images//skybackground.jpg"); /* The image used */
+  background-color: #cccccc; /* Used if the image is unavailable */
+  height: 100px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire container */
+  width: 350px;
+}
+.display{
+    width: 80px;
+    height: 80px;
 }
