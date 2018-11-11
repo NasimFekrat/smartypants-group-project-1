@@ -52,30 +52,28 @@ database.ref().push(coffeeFetcherInputs);
 $("coffee-fetcher").val("");
 $("coffee-destination").val("");
 
+$(".end-requests").hide();
+
 });
 
-var count = 120;//start 120 seconds
+//$(".end-requests").hide();
 
-/*set the timer*/
-function setTimer(){
-    /*start timer*/
-    var timeSet = setInterval(function() {
-        
-        $('.timer').html("Time Remaining: " + count);
-        if(count !== 0){
-            count--;
-            $('.timer').html("Time Remaining: " + count);
-        }else{
-            /*end timer*/
-                clearInterval(timeSet);
-                $(".timer").empty();//clear main
-                /*end timer*/
-        }
-    }, 1000);
-    /*start timer*/       
-}    
-/*set the timer*/
-setTimer();
+var number = 5;
+
+function timer(){
+        setTimeout(timer, 1000);
+        $(".timer").html("Time Remaining " + number);
+        number--;
+
+        //game logic
+        if (number < -1){
+            number = 0;
+            $(".timer").hide();
+            $(".end-requests").show();
+            $(".end-requests").html("<p>Order submissions are closed</p>");
+            }
+        };
+        timer();
 
 
 // Button to add Coffee Receivers
