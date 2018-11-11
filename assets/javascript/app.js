@@ -49,8 +49,8 @@ inputDestination =$("#coffee-destination").val().trim();
 database.ref().push(coffeeFetcherInputs);
     console.log(coffeeFetcherInputs.name);
 
-$("coffee-fetcher").val("");
-$("coffee-destination").val("");
+$("#coffee-fetcher").val("");
+$("#coffee-destination").val("");
 
 
 });
