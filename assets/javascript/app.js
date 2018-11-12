@@ -51,10 +51,11 @@ $(document).ready(function(){
     $("#coffee-fetcher").val("");
     $("#coffee-destination").val("");
 
-timer();
+    timer();
 
     });
 
+function timer(){
 //order submission countdown
 function formatTime(seconds) {
     var m = Math.floor(seconds / 60) % 60;
@@ -64,20 +65,16 @@ function formatTime(seconds) {
     return m + ":" + s;
 }
 var count = 70;
-var counter = setInterval(timer, 1000);
+var counter = setInterval(countdown, 1000);
 
-function timer() {
+function countdown() {
         count--;
-        if (count < 1) 
-        clearInterval(counter);
+        if (count < 0) 
+        return clearInterval(counter);
         $(".timer").html(formatTime(count));
-        /*else if (count === 0){
-            $(".timer").hide();
-            $(".end-requests").show();
-            $(".end-requests").html("Order submissions have ended");
-        }*/
     };
-
+    countdown();
+};
     
     // Button to add Coffee Receivers
     $(".receiver-button").on("click", function(event) {
