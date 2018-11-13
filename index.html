@@ -53,6 +53,8 @@
                 <p class="weather m-0"></p>
             </div>
         </div>
+        
+
         <!--fetcher form display-->
         <div class="row">
             <form class="col-sm-12">
@@ -83,7 +85,8 @@
         </div>
         <!--timer field-->
         <div class="row">
-            <p>Timer</p>
+            <p class="timer"></p>
+        <p class="end-requests"></p>
             <!-- New Orders  -->
             <div class="col-sm-12">
                 <table class="table">
@@ -98,6 +101,7 @@
                 </table>
             </div>    
         </div>    
+
     </div>
 <!-- javascript that bugs out when moved into app.js-->
 <script>
@@ -130,7 +134,7 @@
             if(props.iconImage){
                 //set icon image
                 marker.setIcon(props.iconImage);
-            }
+            };
 
             //check for content
             if(props.content){
