@@ -1,6 +1,6 @@
 $(document).ready(function(){
     
-
+    
     // connection to our firebase database
     var config = {
         apiKey: "AIzaSyDqFP7koygUVZ_6fKkTfW1NvjhhZNPye7s",
@@ -64,7 +64,7 @@ function formatTime(seconds) {
     if (s < 10) s = "0" + s;
     return m + ":" + s;
 }
-var count = 70;
+var count = 300;
 var counter = setInterval(countdown, 1000);
 
 function countdown() {
@@ -160,6 +160,6 @@ function countdown() {
         $(".weather").html(response.weather[0].description);
         $(".display").attr("src" , iconurl);
 
-      });    
-    
+      }); 
+      
 });
