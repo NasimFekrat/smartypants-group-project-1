@@ -145,6 +145,7 @@ $(document).ready(function(){
 
     //google maps ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
     var map;
+    var infoBubble;
 
     function initialize() {
         var center = new google.maps.LatLng(43.660781, -79.396785);
@@ -159,6 +160,8 @@ $(document).ready(function(){
             radius: 1000, //in meters
             types: ['cafe'] //google API understands this string
         };
+
+        infoBubble = new google.maps.InfoWindow();
 
         var service = new google.maps.places.PlacesService(map); // 'Places' is google's service with all the data(names, addresses, etc) on.... places
     
@@ -178,6 +181,11 @@ $(document).ready(function(){
          var marker = new google.maps.Marker({
              map: map,
              position: place.geometry.location
+         })
+
+         google.maps.event.addListener(marker, 'click', function(){ //add a listener to each marker on creation so clicking on it will open an info bubble
+            infoBubble.setContent(place.name);
+            infoBubble.open(map, this);
          })
      }
 
