@@ -147,6 +147,10 @@ $(document).ready(function(){
     var map;
     var infoBubble;
 
+    var request;
+    var service;
+    var markers = [];
+
     function initialize() {
         var center = new google.maps.LatLng(43.660781, -79.396785);
         map = new google.maps.Map(document.getElementById('coffee-map'), {
@@ -154,7 +158,7 @@ $(document).ready(function(){
             zoom: 15
         });
 
-        var request = { // request-format & fields that the google API needs for a successful query
+        request = { // request-format & fields that the google API needs for a successful query
 
             location: center, //references our "center" var
             radius: 1000, //in meters
@@ -163,15 +167,27 @@ $(document).ready(function(){
 
         infoBubble = new google.maps.InfoWindow();
 
-        var service = new google.maps.places.PlacesService(map); // 'Places' is google's service with all the data(names, addresses, etc) on.... places
+        service = new google.maps.places.PlacesService(map); // 'Places' is google's service with all the data(names, addresses, etc) on.... places
     
         service.nearbySearch(request, callback); //nearbySearch is a method in the places library, which accepts our 'request' var as an argument here
+    
+        google.maps.event.addListener(map, 'rightclick', function(event) {
+            map.setCenter(event.latLng)
+            clearResults(markers);
+
+            var request = {
+                location: event.latLng,
+                radius: 1000,
+                types: ['cafe']
+            };
+            service.nearbySearch(request, callback);
+        })
     }
 
      function callback(results, status) {
          if(status == google.maps.places.PlacesServiceStatus.OK){
              for (var m = 0; m < results.length; m++){
-                 createMarker(results[m]);
+                 markers.push(createMarker(results[m]));
              }
          }
      }
@@ -181,12 +197,21 @@ $(document).ready(function(){
          var marker = new google.maps.Marker({
              map: map,
              position: place.geometry.location
-         })
+         });
 
          google.maps.event.addListener(marker, 'click', function(){ //add a listener to each marker on creation so clicking on it will open an info bubble
             infoBubble.setContent(place.name);
             infoBubble.open(map, this);
-         })
+         });
+         return marker;
+         
+     }
+
+     function clearResults(markers) {
+         for (var m in markers) {
+             markers[m].setMap(null)
+         }
+         markers = [];
      }
 
     initialize();
