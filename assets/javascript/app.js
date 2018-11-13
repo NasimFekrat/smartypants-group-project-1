@@ -153,17 +153,33 @@ $(document).ready(function(){
             zoom: 15
         });
 
-        var request = { // request-format & fields the google API needs for a successful query
+        var request = { // request-format & fields that the google API needs for a successful query
 
             location: center, //references our "center" var
-            radius: 1000,
-            types: ['cafe']
+            radius: 1000, //in meters
+            types: ['cafe'] //google API understands this string
         };
 
         var service = new google.maps.places.PlacesService(map); // 'Places' is google's service with all the data(names, addresses, etc) on.... places
     
         service.nearbySearch(request, callback); //nearbySearch is a method in the places library, which accepts our 'request' var as an argument here
     }
+
+     function callback(results, status) {
+         if(status == google.maps.places.PlacesServiceStatus.OK){
+             for (var m = 0; m < results.length; m++){
+                 createMarker(results[m]);
+             }
+         }
+     }
+
+     function createMarker(place) {
+         var placeLoc = place.geometry.location;
+         var marker = new google.maps.Marker({
+             map: map,
+             position: place.geometry.location
+         })
+     }
 
     initialize();
     
