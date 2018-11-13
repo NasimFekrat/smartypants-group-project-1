@@ -26,22 +26,6 @@ body{
     width: 100px;
     height: 100px;
 }
-.centerImg{
-    width: 100%;
-    height: 500px;
-    background-image: url("..//images//background-beverage.jpg"); /* The image used */
-    background-color: #FFCD34; /* Used if the image is unavailable */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
-}
-.discoverBtn{
-    background-color: #FFCD34;
-    opacity:0.65;
-    color: #39302A;
-    font-size: 32px;
-    border: 2px solid #39302A;
-}
 .container{
     background-color: #FFCD34;
     color: #39302A;
