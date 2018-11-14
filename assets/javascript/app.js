@@ -55,19 +55,28 @@ $(document).ready(function(){
         $("form :input").attr("disabled", true);
     });
 
-    //     coffeeFetcherInputs = {
-    //     coffeeFetcher : inputCoffeeFetcher,
-    //     destination : inputDestination,
-    //   };
-    // const ref = firebase.database().ref("");
-    // return ref.orderByChild('coffeeFetcher').equalTo(coffeeFetcherInputs).once("value").then(function(emptySnapshot) {
-    //   // get the key of the respective coffeeInputs
-    //   const key = Object.keys(emptySnapshot.val())[0];
-    //   // coffee Fetcher variable node from firebase
-    //   ref.child(key).remove();
-    // console.log("working");
 
-    // });
+function timer(){
+//order submission countdown
+function formatTime(seconds) {
+    var m = Math.floor(seconds / 60) % 60;
+    var s = seconds % 60;
+    if (m < 10) m = "0" + m;
+    if (s < 10) s = "0" + s;
+    return m + ":" + s;
+}
+var count = 300;
+var counter = setInterval(countdown, 1000);
+
+function countdown() {
+        count--;
+        if (count < 0) 
+        return clearInterval(counter);
+        $(".timer").html(formatTime(count));
+    };
+    countdown();
+};
+
     
     // Button to add Coffee Receivers
     $(".receiver-button").on("click", function(event) {
@@ -177,21 +186,109 @@ $(document).ready(function(){
         // Log the resulting object
         console.log(response);
 
-        
-        //rounds temperature to interger
-        var temp = response.main.temp;
-        var roundedTemp = Math.round(temp);
-        //console.log(roundedTemp);
+    //rounds temperature to interger
+    var temp = response.main.temp;
+    var roundedTemp = Math.round(temp);
+    console.log(roundedTemp);
 
-        //display the icon
-        var iconcode = response.weather[0].icon;
-        var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
-        
-        $(".location").html(response.name);
-        $(".temperature").html(roundedTemp + "&#8451;");
-        $(".weather").html(response.weather[0].description);
-        $(".display").attr("src" , iconurl);
-
-      });    
+    //display the icon
+    var iconcode = response.weather[0].icon;
+    var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
     
-});
+    $(".location").html(response.name);
+    $(".temperature").html(roundedTemp + "&#8451;");
+    $(".weather").html(response.weather[0].description);
+    $(".display").attr("src" , iconurl);
+    });
+
+
+    //google maps ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+    var map;
+    var infoBubble;
+
+    var request;
+    var service;
+    var markers = [];
+
+    function initialize() {
+        var center = new google.maps.LatLng(43.660781, -79.396785);
+        map = new google.maps.Map(document.getElementById('coffee-map'), {
+            center: center,
+            zoom: 15
+        });
+
+        request = { // request-format & fields that the google API needs for a successful query
+
+            location: center, //references our "center" var
+            radius: 1000, //in meters
+            types: ['cafe'] //google API understands this string
+        };
+
+        infoBubble = new google.maps.InfoWindow();
+
+        service = new google.maps.places.PlacesService(map); // 'Places' is google's service with all the data(names, addresses, etc) on.... places
+    
+        service.nearbySearch(request, callback); //nearbySearch is a method in the places library, which accepts our 'request' var as an argument here
+    
+        google.maps.event.addListener(map, 'rightclick', function(event) {
+            map.setCenter(event.latLng)
+            clearResults(markers);
+
+            var request = {
+                location: event.latLng,
+                radius: 1000,
+                types: ['cafe']
+            };
+            service.nearbySearch(request, callback);
+        })
+    }
+
+     function callback(results, status) {
+         if(status == google.maps.places.PlacesServiceStatus.OK){
+             for (var m = 0; m < results.length; m++){
+                 markers.push(createMarker(results[m]));
+             }
+         }
+     }
+
+     
+
+     function createMarker(place) {
+         var placeLoc = place.geometry.location;
+         var marker = new google.maps.Marker({
+             map: map,
+             position: place.geometry.location
+         });
+
+         google.maps.event.addListener(marker, 'click', function(){ //add a listener to each marker on creation so clicking on it will open an info bubble
+
+            var isOpen; // a string set by this if-else based on google's "open_now" boolean in the "opening hours" key of the place object
+                if (place.opening_hours.open_now == true) 
+                {
+                    isOpen = "Open now." // the message that will go in the info-bubble if the place is open
+                }
+                else 
+                {
+                    isOpen = "Closed now." // ditto, if closed
+                }
+
+            var placeData = [place.name + ", </br>", place.vicinity + "</br>", isOpen]; // short array of data we want to show the user about the cafe when it's clicked
+            infoBubble.setContent(placeData[0] + placeData[1] + placeData[2]); //set the bubble to show the cafe's name, address and open/closed status
+            infoBubble.open(map, this);
+            console.log(place); // log the whole place object to the console for quick referencing by us
+         });
+         return marker;
+         
+     }
+
+     function clearResults(markers) {
+         for (var m in markers) {
+             markers[m].setMap(null)
+         }
+         markers = [];
+     }
+
+    initialize();
+    
+}); //end of docready function
+
