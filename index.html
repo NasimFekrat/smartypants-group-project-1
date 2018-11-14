@@ -1,81 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <title>Fetch</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+        <title>Fetch</title>
 
-    <!-- Bootstrap fonts/icons -->
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-   <!-- Bootstrap File -->
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <!-- Bootstrap fonts/icons -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+    <!-- Bootstrap File -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-   <!-- Custom CSS File-->
-   <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Custom CSS File-->
+    <link rel="stylesheet" href="./assets/css/style.css">
 
-   <!-- JQuery -->
-   <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
 
-   <!-- JavaScript File -->
-   <script src="./assets/javascript/app.js"></script>
+    <!-- JavaScript File -->
+    <script src="./assets/javascript/app.js"></script>
 
-   <!-- Firebase Link -->
-   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <!-- Firebase Link -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 
-   <!-- brand Font -->
-   <link href="https://fonts.googleapis.com/css?family=Monoton|Roboto:700" rel="stylesheet">
+    <!-- Google Maps link-->
+        <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCeoFR81vmO8h3Ztjlkk5BPho1VWBy_fcQ"></script>
+
+    <!-- brand Font -->
+    <link href="https://fonts.googleapis.com/css?family=Monoton|Roboto:700" rel="stylesheet">
 
 
-</head>
+    </head>
 
-<body> 
-    <!-- As a heading -->
-    <nav class="navbar">
-        <span class="navbar-brand mx-auto"><img src="assets/images/coffeeCup.png" class="imgNav"> Fetch</span>
-    </nav>
-    
-    <!-- Slider -->
-    <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselIndicators" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="assets/images/background-beverage.png" alt="First slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h1>Discover Coffee Houses Near You</h1>
+    <body> 
+        <!-- As a heading -->
+        <nav class="navbar">
+            <span class="navbar-brand mx-auto"><img src="assets/images/coffeeCup.png" class="imgNav"> Fetch</span>
+        </nav>
+        
+        <!-- Slider -->
+        <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="assets/images/background-beverage.png" alt="First slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1>Discover Coffee Houses Near You</h1>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="assets/images/beverage-weather.png" alt="Second slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1>Get Yourself Ready With The Weather Condition</h1>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="assets/images/beverage-pool.png" alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1>Communicate With Others</h1>
+                    </div>
                 </div>
             </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="assets/images/beverage-weather.png" alt="Second slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h1>Get Yourself Ready With The Weather Condition</h1>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="assets/images/beverage-pool.png" alt="Third slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h1>Communicate With Others</h1>
-                </div>
-            </div>
+            <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-        <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
 
     <!--weather display-->
     <div class="container rounded weatherback my-5">
@@ -99,125 +102,60 @@
         <div class="row">
             <div class="col-sm-12" id="coffee-map"></div>
         </div>
-
-        <!--fetcher form display-->
-        <div class="row">
-            <form class="col-sm-12">
-                <div class="form-group">
-                    <label for="coffee-fetcher">Fetcher</label>
-                    <input type="text" class="form-control" id="coffee-fetcher" placeholder="Fetcher">
-                </div>
-                <div class="form-group">
-                    <label for="coffee-destination">Coffee Shop</label>
-                    <input type="text" class="form-control" id="coffee-destination" placeholder="Coffee Shop">
-                </div>
-                <input class="btn btn-primary fetcher-button" type="submit" value="Submit">
-            </form>
+            <!--fetcher form display-->
+            <div class="row">
+                <form class="col-sm-12">
+                    <div class="form-group">
+                        <label for="coffee-fetcher">Fetcher</label>
+                        <input type="text" class="form-control" id="coffee-fetcher" placeholder="Fetcher">
+                    </div>
+                    <div class="form-group">
+                        <label for="coffee-destination">Coffee Shop</label>
+                        <input type="text" class="form-control" id="coffee-destination" placeholder="Coffee Shop">
+                    </div>
+                    <input class="btn btn-primary fetcher-button" type="submit" value="Submit">
+                </form>
+            </div>
+            <!--receiver form display-->
+            <div class="row">
+                <form class="col-sm-12">
+                    <div class="form-group">
+                        <label for="coffee-receiver">Name</label>
+                        <input type="text" class="form-control" id="coffee-receiver" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="coffee-order">Order and Instructions</label>
+                        <textarea class="form-control" id="coffee-order" rows="3"></textarea>
+                    </div>
+                    <input class="btn btn-primary receiver-button" type="submit" value="Submit">
+                </form>
+            </div>
+            <!--timer field-->
+            <div class="row">
+                <p class="timer"></p>
+                <p class="end-requests"></p>
+                <!-- New Orders  -->
+                <div class="col-sm-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Order</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>    
+            </div> 
+            <div class="push"></div>   
         </div>
-        <!--receiver form display-->
-        <div class="row">
-            <form class="col-sm-12">
-                <div class="form-group">
-                    <label for="coffee-receiver">Name</label>
-                    <input type="text" class="form-control" id="coffee-receiver" placeholder="Name">
-                </div>
-                <div class="form-group">
-                    <label for="coffee-order">Order and Instructions</label>
-                    <textarea class="form-control" id="coffee-order" rows="3"></textarea>
-                </div>
-                <input class="btn btn-primary receiver-button" type="submit" value="Submit">
-            </form>
-        </div>
-        <!--timer field-->
-        <div class="row">
-            <p class="timer"></p>
-            <p class="end-requests"></p>
-            <!-- New Orders  -->
-            <div class="col-sm-12">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Order</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>    
-        </div>    
-
-    </div>
-<!-- javascript that bugs out when moved into app.js-->
-<script>
-    function initMap() {
-        var myhalCoords = {lat:43.660781, lng: -79.396785}; //coordinates of the myhal building
-
-        //map options
-        var options = {
-            zoom: 17,
-            center: myhalCoords
-        } 
-
-        //map object
-        var coffeeMap = new google.maps.Map(document.getElementById('coffee-map'), options);
-
-        var myhalMarker = new google.maps.Marker({ //this one will appear by default
-
-        });
-
-
-        //new, dynamic add marker function DEFINITION
-        function addMarker(props) {
-            var marker = new google.maps.Marker({
-                position: props.coords,
-                map: coffeeMap,
-                content: props.content
-            });
-
-            //as recommended by docs, check for a custom icon using an if statement so we don't get a potential 'undefined' by having it in the main marker definition
-            if(props.iconImage){
-                //set icon image
-                marker.setIcon(props.iconImage);
-            };
-
-            //check for content
-            if(props.content){
-
-                var contentBubble = new google.maps.InfoWindow({ //a bubble with content inside
-                content: props.content
-                });
-
-                marker.addListener('click', function(){ //a click function on the "marker" var in the coffeeMap object, which opens the "contentBubble" var
-                    contentBubble.open(coffeeMap, marker);
-                });
-            }
-
-        } //end of addMarker() definition
-
-        var markers = [
-            {   //Myhal Building marked at pageload by default
-                coords: myhalCoords,
-                iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-                content: '<h3>Myhal Building</h3>'
-            },
-            {  //example location:
-            coords:{lat:43.660781, lng: -79.397985},
-            content: '<h3>Nearby Building</h3>' 
-            }
-        ]
-
-        //loop through markers
-        for (var m = 0; m < markers.length; m++){
-            addMarker(markers[m]);
-        }
-
-    } //end of initMap
-</script>
-<!-- Google Maps link-->
-<script asych defer 
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeoFR81vmO8h3Ztjlkk5BPho1VWBy_fcQ&callback=initMap">
-</script>
-
-</body>
+    <!-- Footer -->
+    <footer class="page-footer font-small pt-4 footer">
+        <!-- Copyright -->
+        <div class="footer-copyright text-center m-0 p-4">Smarty Pants 2018©</div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+    </body>
 </html>
