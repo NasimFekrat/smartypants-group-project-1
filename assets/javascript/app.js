@@ -192,6 +192,8 @@ $(document).ready(function(){
          }
      }
 
+     
+
      function createMarker(place) {
          var placeLoc = place.geometry.location;
          var marker = new google.maps.Marker({
@@ -200,8 +202,10 @@ $(document).ready(function(){
          });
 
          google.maps.event.addListener(marker, 'click', function(){ //add a listener to each marker on creation so clicking on it will open an info bubble
-            infoBubble.setContent(place.name);
+            var placeData = [place.name + ", </br>", place.vicinity];
+            infoBubble.setContent(placeData[0] + placeData[1] + placeData[2]);
             infoBubble.open(map, this);
+            console.log(place);
          });
          return marker;
          
