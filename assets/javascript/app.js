@@ -1,6 +1,5 @@
 $(document).ready(function(){
-    
-    
+
     // connection to our firebase database
     var config = {
         apiKey: "AIzaSyDqFP7koygUVZ_6fKkTfW1NvjhhZNPye7s",
@@ -23,37 +22,39 @@ $(document).ready(function(){
     var inputCoffeeReceiver;
     var inputCoffeeOrder;
     var inputDestination;
+    var myOrder;
 
 
     // Button to add Coffee Fetchers
     $(".fetcher-button").on("click", function(event) {
+
         event.preventDefault();
 
+        // Grabs user input
+        inputCoffeeFetcher = $("#coffee-fetcher").val().trim();
+        inputDestination =$("#coffee-destination").val().trim();
 
-    // Grabs user input
-    inputCoffeeFetcher = $("#coffee-fetcher").val().trim();
-    inputDestination =$("#coffee-destination").val().trim();
+        // Creates local "temporary" object for holding Coffee Receiver data
 
-    // Creates local "temporary" object for holding Coffee Receiver data
+        var coffeeFetcherInputs = {
 
-    var coffeeFetcherInputs = {
+            coffeeFetcher: inputCoffeeFetcher,
+            destination: inputDestination,
 
-        coffeeFetcher : inputCoffeeFetcher,
-        destination : inputDestination,
+        };
 
-    };
+        // Uploads New Input data to the database
 
-    // Uploads New Input data to the database
+        database.ref("fetchers").push(coffeeFetcherInputs);
 
-    database.ref().push(coffeeFetcherInputs);
         console.log(coffeeFetcherInputs.name);
 
-    $("#coffee-fetcher").val("");
-    $("#coffee-destination").val("");
+        $("#coffee-fetcher").val("");
+        $("#coffee-destination").val("");
 
-    timer();
-
+        $("form :input").attr("disabled", true);
     });
+
 
 function timer(){
 //order submission countdown
@@ -75,59 +76,99 @@ function countdown() {
     };
     countdown();
 };
+
     
     // Button to add Coffee Receivers
     $(".receiver-button").on("click", function(event) {
         event.preventDefault();
 
 
-    // Grabs user input
-    inputCoffeeReceiver =$("#coffee-receiver").val().trim();
-    inputCoffeeOrder = $("#coffee-order").val().trim();
+        // Grabs user input
+        inputCoffeeReceiver =$("#coffee-receiver").val().trim();
+        inputCoffeeOrder = $("#coffee-order").val().trim();
 
 
-    // Creates local "temporary" object for holding Coffee Receiver data
+        // Creates local "temporary" object for holding Coffee Receiver data
+        var coffeeReceiverInputs = {
 
-    var coffeeReceiverInputs = {
+            coffeeReceiver: inputCoffeeReceiver,
+            coffeeOrder: inputCoffeeOrder,
 
-        coffeeReceiver : inputCoffeeReceiver,
-        coffeeOrder : inputCoffeeOrder,
+        };
 
-    };
+        // Uploads New Input data to the database
 
-    // Uploads New Input data to the database
-
-    database.ref().push(coffeeReceiverInputs);
+        myOrder = database.ref("receivers").push(coffeeReceiverInputs);
         console.log(coffeeReceiverInputs.name);
 
-    $("coffee-fetcher").val("");
-    $("coffee-destination").val("");
+        $("coffee-fetcher").val("");
+        $("coffee-destination").val("");
 
+        $("form :input").attr("disabled", true);
+
+        timer();
     });
 
+    function timer(){
+        //order submission countdown
+        function formatTime(seconds) {
+            var m = Math.floor(seconds / 60) % 60;
+            var s = seconds % 60;
+            if (m < 10) m = "0" + m;
+            if (s < 10) s = "0" + s;
+            return m + ":" + s;
+        }
+
+        var count = 10; // 70
+        var counter = setInterval(countdown, 1000);
+
+        function countdown() {
+            count--;
+            if (count < 0) {
+                clearInterval(counter);
+                // remove fetcher from DB once time is up
+                myOrder.remove();
+                $(".timer").text('times up! order removed!');
+            } else {
+                $(".timer").html(formatTime(count));
+            }
+        };
+        countdown();
+    };
 
     // 3. Create Firebase event for adding Coffee Receiver and Fetcher Inputs to the database and a row in the html when a user adds an entry
 
-    database.ref().on("child_added", function(childSnapshot) {
+    database.ref("fetchers").on("child_added", function(childSnapshot) {
         console.log(childSnapshot.val());
-    
+
         // Store everything into a variable.
         inputCoffeeFetcher = childSnapshot.val().coffeeFetcher;
-        inputCoffeeReceiver = childSnapshot.val().coffeeReceiver;
         inputDestination = childSnapshot.val().destination;
-        inputCoffeeOrder = childSnapshot.val().coffeeOrder;
-
 
         var newRow = $("<tr>").append(
             $("<td>").text(inputCoffeeFetcher),
             $("<td>").text(inputCoffeeReceiver),
-            $("<td>").text(inputCoffeeOrder),
             $("<td>").text(inputDestination),
+            $("<td>").text(inputCoffeeOrder),
         )
 
-        $(".table >tbody").append(newRow);
+        $(".table.fetchers > tbody").append(newRow);
 
 
+    });
+
+    database.ref("receivers").on("child_added", function(childSnapshot) {
+        console.log(childSnapshot.val());
+
+        inputCoffeeReceiver = childSnapshot.val().coffeeReceiver;
+        inputCoffeeOrder = childSnapshot.val().coffeeOrder;
+
+        var newRow = $("<tr>").append(
+            $("<td>").text(inputCoffeeReceiver),
+            $("<td>").text(inputCoffeeOrder),
+        )
+
+        $(".table.receivers > tbody").append(newRow);
     });
 
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + "q=Toronto,Canada&units=metric&appid=" + APIKey;
