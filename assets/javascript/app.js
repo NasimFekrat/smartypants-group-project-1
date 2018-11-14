@@ -1,6 +1,6 @@
 $(document).ready(function(){
     
-
+    
     // connection to our firebase database
     var config = {
         apiKey: "AIzaSyDqFP7koygUVZ_6fKkTfW1NvjhhZNPye7s",
@@ -51,11 +51,31 @@ $(document).ready(function(){
     $("#coffee-fetcher").val("");
     $("#coffee-destination").val("");
 
+    timer();
 
     });
 
+function timer(){
+//order submission countdown
+function formatTime(seconds) {
+    var m = Math.floor(seconds / 60) % 60;
+    var s = seconds % 60;
+    if (m < 10) m = "0" + m;
+    if (s < 10) s = "0" + s;
+    return m + ":" + s;
+}
+var count = 300;
+var counter = setInterval(countdown, 1000);
 
-
+function countdown() {
+        count--;
+        if (count < 0) 
+        return clearInterval(counter);
+        $(".timer").html(formatTime(count));
+    };
+    countdown();
+};
+    
     // Button to add Coffee Receivers
     $(".receiver-button").on("click", function(event) {
         event.preventDefault();
@@ -119,14 +139,12 @@ $(document).ready(function(){
       // We store all of the retrieved data inside of an object called "response"
       .then(function(response) {
 
+        // Log the queryURL
+        console.log(queryURL);
 
-    // Log the queryURL
-    console.log(queryURL);
+        // Log the resulting object
+        console.log(response);
 
-    // Log the resulting object
-    console.log(response);
-
-        
     //rounds temperature to interger
     var temp = response.main.temp;
     var roundedTemp = Math.round(temp);
@@ -232,3 +250,4 @@ $(document).ready(function(){
     initialize();
     
 }); //end of docready function
+
