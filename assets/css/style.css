@@ -57,6 +57,36 @@ body{
     height: 500px;
     width: 40%;
 }
+
+
+
+
+.coffeeContainer{
+    margin: 5px;
+    padding: 10px;
+    font-family: 'Monoton', cursive;
+    font-size: 30px;
+    background-color:#A7BCFF;
+
+}
+
+.fetcher-button{
+    background-color: #FFCD34;
+    color: #39302A;
+}
+
+.receiver-button{
+    background-color: #FFCD34;
+    color: #39302A;
+}
+
+.table{
+
+    background-color:#A7BCFF;
+    color: #39302A;
+    margin: 60px;
+
+}
 .footer , .push{
     height: 100px;
 }
@@ -65,4 +95,3 @@ body{
     color: #39302A;
     background-color: #FFCD34;
     border-top: 10px solid #39302A;
-}
