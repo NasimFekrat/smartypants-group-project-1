@@ -10,7 +10,7 @@ font-family: 'Roboto', sans-serif;
 font-family: 'Monoton', cursive;
 */
 body{
-    background-color: #39302A;
+    background-color: #FFCD34;
 }
 .navbar{
     background-color: #FFCD34;
@@ -26,25 +26,34 @@ body{
     width: 100px;
     height: 100px;
 }
-.container{
-    background-color: #FFCD34;
-    color: #39302A;
+.weatherback{
+    background-color: #39302A;
+    opacity: 0.8;
     font-family: 'Roboto', sans-serif;
+}
+.container{
+    background-color: #39302A;
+    color: #FFCD34;
+    font-family: 'Roboto', sans-serif;
+}
+.location{
+    font-size: 72px;
+    font-family:'Roboto', sans-serif;
+    font-weight: bold; 
+}
+.display{
+    width: 40%;
+    height: 50%;
+}
+.weather{
+    font-size: 52px;
+    color: #FFCD34;
+}
+.temperature{
+    font-size: 82px;
+    color: #FFCD34;
 }
 #coffee-map {
     height: 500px;
     width: 40%;
-}
-.weatherapp {
-  background-image: url("..//images//skybackground.png"); /* The image used */
-  background-color: #FFCD34; /* Used if the image is unavailable */
-  height: 100px; /* You must set a specified height */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
-  width: 30%;
-}
-.display{
-    width: 80px;
-    height: 80px;
 }

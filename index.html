@@ -76,20 +76,29 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+
+    <!--weather display-->
+    <div class="container rounded weatherback my-5">
+        <div class="row m-3 p-3">
+            <p class="location m-0"></p>
+        </div>
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <figure class="col-sm-4 figure">
+                <img class="display figure-img img-fluid ml-5" alt="weather-icon">
+                <figcaption class="figure-caption text-left weather ml-5 pl-3"></figcaption>
+            </figure>
+            <div class="col-sm-4">
+                <p class="temperature text-left"></p>
+            </div>   
+        </div>
+    </div>
+
     <div class="container">
-        <!--weather display-->
+        <!--Map display-->
         <div class="row">
             <div class="col-sm-12" id="coffee-map"></div>
         </div>
-        <div class="row rounded weatherapp">
-            <div class="col-sm-4"><img class="display"></div>
-            <div class="col-sm-8 my-3">
-                <p class="location m-0 h5"></p>
-                <p class="temperature m-0"></p>
-                <p class="weather m-0"></p>
-            </div>
-        </div>
-        
 
         <!--fetcher form display-->
         <div class="row">
