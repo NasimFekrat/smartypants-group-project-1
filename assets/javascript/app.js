@@ -202,10 +202,21 @@ $(document).ready(function(){
          });
 
          google.maps.event.addListener(marker, 'click', function(){ //add a listener to each marker on creation so clicking on it will open an info bubble
-            var placeData = [place.name + ", </br>", place.vicinity];
-            infoBubble.setContent(placeData[0] + placeData[1] + placeData[2]);
+
+            var isOpen; // a string set by this if-else based on google's "open_now" boolean in the "opening hours" key of the place object
+                if (place.opening_hours.open_now == true) 
+                {
+                    isOpen = "Open now." // the message that will go in the info-bubble if the place is open
+                }
+                else 
+                {
+                    isOpen = "Closed now." // ditto, if closed
+                }
+
+            var placeData = [place.name + ", </br>", place.vicinity + "</br>", isOpen]; // short array of data we want to show the user about the cafe when it's clicked
+            infoBubble.setContent(placeData[0] + placeData[1] + placeData[2]); //set the bubble to show the cafe's name, address and open/closed status
             infoBubble.open(map, this);
-            console.log(place);
+            console.log(place); // log the whole place object to the console for quick referencing by us
          });
          return marker;
          
