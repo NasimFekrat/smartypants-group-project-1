@@ -6,11 +6,18 @@ light gray: rgb(149, 129, 115)
 orange:(248,147,29) = #F8931D
 mat orange:(206,141,62) = #CE8D3E
 dark orange:(236,112,22) = #EC7016
+blue darker: #059896
+blue lighter: #67c5c7
 font-family: 'Roboto', sans-serif;
 font-family: 'Monoton', cursive;
 */
 body{
-    background-color: #39302A;
+    background-image: url("../images/abstract-art-attractive.jpg"); /* The image used */
+    background-color: #FFCD34; /* Used if the image is unavailable */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    color: #39302A;
 }
 .navbar{
     background-color: #FFCD34;
@@ -27,34 +34,49 @@ body{
     height: 100px;
 }
 .container{
-    background-color: #FFCD34;
-    color: #39302A;
+    background-color: #39302A;
+    color: #FFCD34;
     font-family: 'Roboto', sans-serif;
 }
+
 #coffee-map {
     height: 500px;
 }
-.weatherapp {
-    background-image: url("..//images//skybackground.png"); /* The image used */
+
+.weather-background{
+    background-image: url("../images/abstract-art-attractive.jpg"); /* The image used */
     background-color: #FFCD34; /* Used if the image is unavailable */
-    height: 100px; /* You must set a specified height */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */
-    width: 30%;
+    color: #39302A;
+}
+.location{
+    font-size: 24px;
+    font-family:'Roboto', sans-serif;
+    font-weight: bold; 
 }
 .display{
-    width: 80px;
-    height: 80px;
+    width: 50%;
+    height: 30%;
+}
+.weather{
+    font-size: 22px;
+}
+.temperature{
+    font-size: 24px;
+}
+
+#coffee-map {
+    height: 500px;
+    width: 40%;
+    color: #39302A;
 }
 
 .coffeeContainer{
-    margin: 5px;
-    padding: 10px;
-    font-family: 'Monoton', cursive;
-    font-size: 30px;
-    background-color:#A7BCFF;
-
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    color: #FFCD34;
 }
 
 .fetcher-button{
@@ -68,17 +90,22 @@ body{
 }
 
 .table{
-
-    background-color:#A7BCFF;
+    background-color:#FFCD34;
     color: #39302A;
-    margin: 60px;
-
-<<<<<<< HEAD
-=======
 }
 
 .timer{
     background-color: red;
     color:white;
->>>>>>> master
+}
+
+.footer , .push{
+    height: 100px;
+}
+.footer-copyright{
+    font-family: 'Monoton', cursive;
+    color: #39302A;
+    background-color: #FFCD34;
+    border-top: 10px solid #39302A;
+    margin: 60px;
 }

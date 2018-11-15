@@ -22,7 +22,6 @@ $(document).ready(function(){
     var inputCoffeeReceiver;
     var inputCoffeeOrder;
     var inputDestination;
-    var myOrder;
 
 
     // Button to add Coffee Fetchers
@@ -52,8 +51,7 @@ $(document).ready(function(){
         $("#coffee-fetcher").val("");
         $("#coffee-destination").val("");
 
-        $(".fetchers").prop("disabled", true);
-        
+        $(".fetchers").prop("disabled", true); 
 
         timer();
     });
@@ -80,40 +78,11 @@ $(document).ready(function(){
 
 
         database.ref("receivers").push(coffeeReceiverInputs);
-        console.log(coffeeReceiverInputs.name);
 
         $("#coffee-receiver").val("");
         $("#coffee-order").val("");
 
-
     });
-
-    function timer(){
-        //order submission countdown
-        function formatTime(seconds) {
-            var m = Math.floor(seconds / 60) % 60;
-            var s = seconds % 60;
-            if (m < 10) m = "0" + m;
-            if (s < 10) s = "0" + s;
-            return m + ":" + s;
-        }
-
-        var count = 10; // 70
-        var counter = setInterval(countdown, 1000);
-
-        function countdown() {
-            count--;
-            if (count < 0) {
-                clearInterval(counter);
-                // remove fetcher from DB once time is up
-                myOrder.remove();
-                $(".timer").text('times up! order removed!');           
-            } else {
-                $(".timer").html(formatTime(count));
-            }
-        };
-        countdown();
-    };
 
     // 3. Create Firebase event for adding Coffee Receiver and Fetcher Inputs to the database and a row in the html when a user adds an entry
 
@@ -131,7 +100,7 @@ $(document).ready(function(){
             $("<td>").text(inputCoffeeOrder),
         )
 
-        $(".table.fetchers > tbody").append(newRow);
+        $(".fetchers > tbody").append(newRow);
 
     });
 
@@ -147,7 +116,7 @@ $(document).ready(function(){
             $("<td>").text(inputCoffeeOrder),
         )
 
-        $(".table.receivers > tbody").append(newRow);
+        $(".receivers > tbody").append(newRow);
     });
 
     database.ref("receivers").on("child_added", function(childSnapshot) {
@@ -163,6 +132,38 @@ $(document).ready(function(){
 
         $(".table.receivers > tbody").append(newRow);
     });
+
+    function timer(){
+        //order submission countdown
+        function formatTime(seconds) {
+            var m = Math.floor(seconds / 60) % 60;
+            var s = seconds % 60;
+            if (m < 10) m = "0" + m;
+            if (s < 10) s = "0" + s;
+            return m + ":" + s;
+        }
+
+        var count = 320; // 70
+        var counter = setInterval(countdown, 1000);
+
+        function countdown() {
+            count--;
+            if (count < 0) {
+                clearInterval(counter);
+                // remove fetcher from DB once time is up
+                var rootRefReceivers = firebase.database().ref().child("receivers");
+                rootRefReceivers.remove();
+                var rootRefFetchers = firebase.database().ref().child("fetchers");
+                rootRefFetchers.remove();
+                $(".timer").text('times up! Please do not order anymore!');                
+
+                
+            } else {
+                $(".timer").html("You have " + formatTime(count) + " to request your order!");
+            }
+        };
+        countdown();
+    };
 
 
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + "q=Toronto,Canada&units=metric&appid=" + APIKey;
@@ -276,7 +277,7 @@ $(document).ready(function(){
                     isOpen = "Closed now." // ditto, if closed
                 }
             
-            $("#coffee-destination").val(place.name + "    (" + place.vicinity + ")"); //when the marker for a shop is clicked, the destination form input automatically fills with the name of the shop
+            $("#coffee-destination").val(place.name + " (" + place.vicinity + ")"); //when the marker for a shop is clicked, the destination form input automatically fills with the name of the shop
             console.log(place.name + " selected.");
 
             var placeData = [place.name + ", </br>", place.vicinity + "</br>", isOpen]; // short array of data we want to show the user about the cafe when it's clicked
