@@ -45,38 +45,17 @@ $(document).ready(function(){
 
         // Uploads New Input data to the database
 
-        database.ref("fetchers").push(coffeeFetcherInputs);
+        myOrder =  database.ref("fetchers").push(coffeeFetcherInputs);
 
-        console.log(coffeeFetcherInputs.name);
 
         $("#coffee-fetcher").val("");
         $("#coffee-destination").val("");
 
-        $("form :input").attr("disabled", true);
+        $(".fetchers").prop("disabled", true);
+        
+
+        timer();
     });
-
-
-function timer(){
-//order submission countdown
-function formatTime(seconds) {
-    var m = Math.floor(seconds / 60) % 60;
-    var s = seconds % 60;
-    if (m < 10) m = "0" + m;
-    if (s < 10) s = "0" + s;
-    return m + ":" + s;
-}
-var count = 300;
-var counter = setInterval(countdown, 1000);
-
-function countdown() {
-        count--;
-        if (count < 0) 
-        return clearInterval(counter);
-        $(".timer").html(formatTime(count));
-    };
-    countdown();
-};
-
     
     // Button to add Coffee Receivers
     $(".receiver-button").on("click", function(event) {
@@ -98,15 +77,46 @@ function countdown() {
 
         // Uploads New Input data to the database
 
-        myOrder = database.ref("receivers").push(coffeeReceiverInputs);
+        database.ref("receivers").push(coffeeReceiverInputs);
         console.log(coffeeReceiverInputs.name);
 
-        $("coffee-fetcher").val("");
-        $("coffee-destination").val("");
+        $("#coffee-receiver").val("");
+        $("#coffee-order").val("");
 
-        $("form :input").attr("disabled", true);
+        
+    });
 
-        timer();
+    // 3. Create Firebase event for adding Coffee Receiver and Fetcher Inputs to the database and a row in the html when a user adds an entry
+
+    database.ref("fetchers").on("child_added", function(childSnapshot) {
+        console.log(childSnapshot.val());
+
+        // Store everything into a variable.
+        inputCoffeeFetcher = childSnapshot.val().coffeeFetcher;
+        inputDestination = childSnapshot.val().destination;
+
+        var newRow = $("<tr>").append(
+            $("<td>").text(inputCoffeeFetcher),
+            $("<td>").text(inputDestination),
+        )
+
+        $(".fetchers > tbody").append(newRow);
+
+
+    });
+
+    database.ref("receivers").on("child_added", function(childSnapshot) {
+        console.log(childSnapshot.val());
+
+        inputCoffeeReceiver = childSnapshot.val().coffeeReceiver;
+        inputCoffeeOrder = childSnapshot.val().coffeeOrder;
+
+        var newRow = $("<tr>").append(
+            $("<td>").text(inputCoffeeReceiver),
+            $("<td>").text(inputCoffeeOrder),
+        )
+
+        $(".receivers > tbody").append(newRow);
     });
 
     function timer(){
@@ -127,8 +137,11 @@ function countdown() {
             if (count < 0) {
                 clearInterval(counter);
                 // remove fetcher from DB once time is up
+                
                 myOrder.remove();
-                $(".timer").text('times up! order removed!');
+                $(".timer").text('times up! order removed!');                
+
+                
             } else {
                 $(".timer").html(formatTime(count));
             }
@@ -136,40 +149,6 @@ function countdown() {
         countdown();
     };
 
-    // 3. Create Firebase event for adding Coffee Receiver and Fetcher Inputs to the database and a row in the html when a user adds an entry
-
-    database.ref("fetchers").on("child_added", function(childSnapshot) {
-        console.log(childSnapshot.val());
-
-        // Store everything into a variable.
-        inputCoffeeFetcher = childSnapshot.val().coffeeFetcher;
-        inputDestination = childSnapshot.val().destination;
-
-        var newRow = $("<tr>").append(
-            $("<td>").text(inputCoffeeFetcher),
-            $("<td>").text(inputCoffeeReceiver),
-            $("<td>").text(inputDestination),
-            $("<td>").text(inputCoffeeOrder),
-        )
-
-        $(".table.fetchers > tbody").append(newRow);
-
-
-    });
-
-    database.ref("receivers").on("child_added", function(childSnapshot) {
-        console.log(childSnapshot.val());
-
-        inputCoffeeReceiver = childSnapshot.val().coffeeReceiver;
-        inputCoffeeOrder = childSnapshot.val().coffeeOrder;
-
-        var newRow = $("<tr>").append(
-            $("<td>").text(inputCoffeeReceiver),
-            $("<td>").text(inputCoffeeOrder),
-        )
-
-        $(".table.receivers > tbody").append(newRow);
-    });
 
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?" + "q=Toronto,Canada&units=metric&appid=" + APIKey;
 

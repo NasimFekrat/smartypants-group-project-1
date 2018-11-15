@@ -78,92 +78,92 @@
                 <span class="sr-only">Next</span>
             </a>
         </div>
-<div class="container rounded my-5">
-    <div class="row">
-        <div class="col-sm-7" id="coffee-map"></div>
-        <div class="col-sm-5 weatherback">
-            <!--weather display-->
-            <div class="row m-3 p-3">
-                <p class="location m-0"></p>
-            </div>
-            <div class="row">
-                <div class="col-sm-2"></div>
-                <figure class="col-sm-4 figure">
-                    <img class="display figure-img img-fluid ml-5" alt="weather-icon">
-                    <figcaption class="figure-caption text-left weather ml-5 pl-3"></figcaption>
-                </figure>
-                <div class="col-sm-4">
-                    <p class="temperature text-left"></p>
-                </div>   
-            </div>
-            <!--fetcher form display-->
-            <div class="row">
-                <form class="col-sm-6 coffeeContainer font-weight-bold">
-                    <div class="form-group">
-                        <label for="coffee-fetcher">Coffee Fetcher Name</label>
-                        <input type="text" class="form-control" id="coffee-fetcher" placeholder="Fetcher Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="coffee-destination">Coffee Shop Destination</label>
-                        <input type="text" class="form-control" id="coffee-destination" placeholder="Coffee Shop">
-                    </div>
-                    <input class="btn fetcher-button" type="submit" value="Submit">
-                </form>
-            </div>
-        </div> 
-    </div>
-    <!--timer field-->
-    <div class="row">
-        <div class="col-sm-12">
-            <p class="timer"></p>
-            <p class="end-requests"></p>
-        </div>
-    </div>
-    <div class="row">
-        <!--receiver form display-->
-        <form class="col-sm-4 coffeeContainer font-weight-bold">
-            <div class="form-group">
-                <label for="coffee-receiver">Coffee Purchaser</label>
-                <input type="text" class="form-control" id="coffee-receiver" placeholder="Name" >
-            </div>
-            <div class="form-group">
-                <label for="coffee-order">Order and Instructions</label>
-                <textarea class="form-control" id="coffee-order" placeholder="How do you like your coffee..." rows="3"></textarea>
-            </div>
-            <input class="btn receiver-button" type="submit"  value="Submit">
-        </form>
-        <!-- Fetchers  -->
-        <div class="col-sm-4">
-            <table class="table fetchers">
-                <thead>
-                    <tr>
-                        <th scope="col">Coffee Fetcher Name</th>
-                        <th scope="col">Coffee Shop Destination</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
-        <!-- Receivers  -->
-        <div class="col-sm-4">
-            <table class="table receivers">
-                <thead>
-                    <tr>
-                        <th scope="col">Coffee Purchaser</th>                           
-                        <th scope="col">Order and Instructions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
-        <div class="push"></div>
-    </div>
-     
-</div>
 
-        
+        <!-- main application part -->
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-sm-7" id="coffee-map"></div>
+                <div class="col-sm-5 weatherback">
+                    <!--weather display-->
+                    <div class="row m-3 p-3">
+                        <p class="location m-0"></p>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2"></div>
+                        <figure class="col-sm-4 figure">
+                            <img class="display figure-img img-fluid ml-5" alt="weather-icon">
+                            <figcaption class="figure-caption text-left weather ml-5 pl-3"></figcaption>
+                        </figure>
+                        <div class="col-sm-4">
+                            <p class="temperature text-left"></p>
+                        </div>   
+                    </div>
+                    <!--fetcher form display-->
+                    <div class="row">
+                        <form class="col-sm-12 coffeeContainer font-weight-bold">
+                            <div class="form-group">
+                                <label for="coffee-fetcher">Coffee Fetcher Name</label>
+                                <input type="text" class="form-control" id="coffee-fetcher" placeholder="Fetcher Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="coffee-destination">Coffee Shop Destination</label>
+                                <input type="text" class="form-control" id="coffee-destination" placeholder="Coffee Shop">
+                            </div>
+                            <input class="btn fetcher-button" type="submit" value="Submit">
+                        </form>
+                    </div>
+                </div> 
+            </div>
+            <!--timer field-->
+            <div class="row my-3">
+                <div class="col-sm-12">
+                    <p class="timer"></p>
+                    <p class="end-requests"></p>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <!--receiver form display-->
+                <form class="col-sm-4 coffeeContainer font-weight-bold">
+                    <div class="form-group">
+                        <label for="coffee-receiver">Coffee Purchaser</label>
+                        <input type="text" class="form-control" id="coffee-receiver" placeholder="Name" >
+                    </div>
+                    <div class="form-group">
+                        <label for="coffee-order">Order and Instructions</label>
+                        <textarea class="form-control" id="coffee-order" placeholder="How do you like your coffee..." rows="3"></textarea>
+                    </div>
+                    <input class="btn receiver-button" type="submit"  value="Submit">
+                </form>
+                <!-- Fetchers  -->
+                <div class="col-sm-4">
+                    <table class="table fetchers">
+                        <thead>
+                            <tr>
+                                <th scope="col">Coffee Fetcher Name</th>
+                                <th scope="col">Coffee Shop Destination</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Receivers  -->
+                <div class="col-sm-4">
+                    <table class="table receivers">
+                        <thead>
+                            <tr>
+                                <th scope="col">Coffee Purchaser</th>                           
+                                <th scope="col">Order and Instructions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>    
+            </div>
+            <div class="push"></div>
+        </div>
+
         <!-- Footer -->
         <footer class="page-footer font-small pt-4 footer">
             <!-- Copyright -->

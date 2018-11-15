@@ -35,7 +35,7 @@ body{
 }
 .container{
     background-color: #39302A;
-    color: #39302A;
+    color: #FFCD34;
     font-family: 'Roboto', sans-serif;
 }
 .weatherback{
@@ -67,7 +67,7 @@ body{
 
 .coffeeContainer{
     font-family: 'Roboto', sans-serif;
-    font-size: 14px;
+    font-size: 22px;
     color: #FFCD34;
 }
 
@@ -84,6 +84,7 @@ body{
 .table{
     background-color:#FFCD34;
     color: #39302A;
+
 }
 .footer , .push{
     height: 100px;
@@ -93,4 +94,7 @@ body{
     color: #39302A;
     background-color: #FFCD34;
     border-top: 10px solid #39302A;
+
+    margin: 60px;
+
 }
