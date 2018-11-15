@@ -51,7 +51,7 @@ $(document).ready(function(){
         $("#coffee-fetcher").val("");
         $("#coffee-destination").val("");
 
-        $(".fetchers").prop("disabled", true); 
+        //$(".fetchers").prop("disabled", true); 
 
         timer();
     });
@@ -130,7 +130,7 @@ $(document).ready(function(){
             $("<td>").text(inputCoffeeOrder),
         )
 
-        $(".table.receivers > tbody").append(newRow);
+        $(".receivers > tbody").append(newRow);
     });
 
     function timer(){

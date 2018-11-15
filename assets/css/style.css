@@ -79,6 +79,12 @@ body{
     color: #FFCD34;
 }
 
+.timer{
+    background-color:rgb(138,23,4);
+    height: 50px;
+    color: #FFCD34;
+}
+
 .fetcher-button{
     background-color: #FFCD34;
     color: #39302A;
@@ -92,11 +98,6 @@ body{
 .table{
     background-color:#FFCD34;
     color: #39302A;
-}
-
-.timer{
-    background-color: red;
-    color:white;
 }
 
 .footer , .push{
