@@ -203,7 +203,7 @@ $(document).ready(function(){
 
     var request;
     var service;
-    var markers = [];
+    var markers = []; //array to be filled with marker objects created by the createMarker function
 
     function initialize() {
         var center = new google.maps.LatLng(43.660781, -79.396785);
@@ -212,11 +212,10 @@ $(document).ready(function(){
             zoom: 15
         });
 
-        request = { // request-format & fields that the google API needs for a successful query
-
+        request = { //request object with key-values formatted as needed for a successful query to the google api
             location: center, //references our "center" var
-            radius: 1000, //in meters
-            types: ['cafe'] //google API understands this string
+            radius: 1000, //meter-radius in which we want it to retrieve data on places 
+            types: ['cafe'] //string the api needs to look for coffee shops
         };
 
         infoBubble = new google.maps.InfoWindow();
@@ -229,9 +228,9 @@ $(document).ready(function(){
             map.setCenter(event.latLng)
             clearResults(markers);
 
-            var request = {
-                location: event.latLng,
-                radius: 1000,
+            var request = { 
+                location: event.latLng, //instead of the default center, location will be the lat && lng coords returns on the rightclick event
+                radius: 1000, 
                 types: ['cafe']
             };
             service.nearbySearch(request, callback);
@@ -239,18 +238,17 @@ $(document).ready(function(){
     }
 
      function callback(results, status) {
-         if(status == google.maps.places.PlacesServiceStatus.OK){
+         if(status == google.maps.places.PlacesServiceStatus.OK){ 
              for (var m = 0; m < results.length; m++){
-                 markers.push(createMarker(results[m]));
+                 markers.push(createMarker(results[m])); // fill the markers array with objects, if the status of the results is OK
              }
          }
      }
 
      
 
-    function createMarker(place) {
-         var placeLoc = place.geometry.location;
-         var marker = new google.maps.Marker({
+    function createMarker(place) { 
+         var marker = new google.maps.Marker({ //creates the actual markers on the map 
              map: map,
              position: place.geometry.location
          });
@@ -273,22 +271,21 @@ $(document).ready(function(){
             var placeData = [place.name + ", </br>", place.vicinity + "</br>", isOpen]; // short array of data we want to show the user about the cafe when it's clicked
             infoBubble.setContent(placeData[0] + placeData[1] + placeData[2]); //set the bubble to show the cafe's name, address and open/closed status
             infoBubble.open(map, this);
-            console.log(place); // log the whole place object to the console for quick referencing by us
-
+            console.log(place);
             
          });
          return marker;
     }
    
 
-    function clearResults(markers) {
+    function clearResults(markers) { //clears the markers array for re-populating with new markers when a new center is set
          for (var m in markers) {
              markers[m].setMap(null)
          }
          markers = [];
      }
 
-    initialize();
+    initialize(); //function called on page load
     
 }); //end of docready function
 
