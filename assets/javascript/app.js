@@ -253,7 +253,7 @@ function countdown() {
 
      
 
-     function createMarker(place) {
+    function createMarker(place) {
          var placeLoc = place.geometry.location;
          var marker = new google.maps.Marker({
              map: map,
@@ -271,17 +271,22 @@ function countdown() {
                 {
                     isOpen = "Closed now." // ditto, if closed
                 }
+            
+            $("#coffee-destination").val(place.name + "    (" + place.vicinity + ")"); //when the marker for a shop is clicked, the destination form input automatically fills with the name of the shop
+            console.log(place.name + " selected.");
 
             var placeData = [place.name + ", </br>", place.vicinity + "</br>", isOpen]; // short array of data we want to show the user about the cafe when it's clicked
             infoBubble.setContent(placeData[0] + placeData[1] + placeData[2]); //set the bubble to show the cafe's name, address and open/closed status
             infoBubble.open(map, this);
             console.log(place); // log the whole place object to the console for quick referencing by us
+
+            
          });
          return marker;
-         
-     }
+    }
+   
 
-     function clearResults(markers) {
+    function clearResults(markers) {
          for (var m in markers) {
              markers[m].setMap(null)
          }
