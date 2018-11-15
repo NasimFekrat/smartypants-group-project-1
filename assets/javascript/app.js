@@ -196,9 +196,10 @@ $(document).ready(function(){
     });
 
 
-    //google maps ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-    var map;
-    var infoBubble;
+    //Google Maps API interactions ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+
+    var map; // the actual map object
+    var infoBubble; //the bubbles that will pop up when markers are clicked
 
     var request;
     var service;
