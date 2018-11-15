@@ -74,3 +74,8 @@ body{
     margin: 60px;
 
 }
+
+.timer{
+    background-color: red;
+    color:white;
+}
