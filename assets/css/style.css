@@ -39,6 +39,10 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
+#coffee-map {
+    height: 500px;
+}
+
 .weather-background{
     background-image: url("../images/abstract-art-attractive.jpg"); /* The image used */
     background-color: #FFCD34; /* Used if the image is unavailable */
@@ -88,8 +92,13 @@ body{
 .table{
     background-color:#FFCD34;
     color: #39302A;
-
 }
+
+.timer{
+    background-color: red;
+    color:white;
+}
+
 .footer , .push{
     height: 100px;
 }
@@ -98,7 +107,5 @@ body{
     color: #39302A;
     background-color: #FFCD34;
     border-top: 10px solid #39302A;
-
     margin: 60px;
-
 }
