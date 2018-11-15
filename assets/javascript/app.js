@@ -22,7 +22,6 @@ $(document).ready(function(){
     var inputCoffeeReceiver;
     var inputCoffeeOrder;
     var inputDestination;
-    var myOrder;
 
 
     // Button to add Coffee Fetchers
@@ -51,8 +50,7 @@ $(document).ready(function(){
         $("#coffee-fetcher").val("");
         $("#coffee-destination").val("");
 
-        $(".fetchers").prop("disabled", true);
-        
+        $(".fetchers").prop("disabled", true); 
 
         timer();
     });
@@ -78,12 +76,10 @@ $(document).ready(function(){
         // Uploads New Input data to the database
 
         database.ref("receivers").push(coffeeReceiverInputs);
-        console.log(coffeeReceiverInputs.name);
 
         $("#coffee-receiver").val("");
         $("#coffee-order").val("");
-
-        
+           
     });
 
     // 3. Create Firebase event for adding Coffee Receiver and Fetcher Inputs to the database and a row in the html when a user adds an entry
@@ -119,6 +115,7 @@ $(document).ready(function(){
         $(".receivers > tbody").append(newRow);
     });
 
+
     function timer(){
         //order submission countdown
         function formatTime(seconds) {
@@ -129,7 +126,7 @@ $(document).ready(function(){
             return m + ":" + s;
         }
 
-        var count = 10; // 70
+        var count = 30; // 70
         var counter = setInterval(countdown, 1000);
 
         function countdown() {
@@ -137,9 +134,11 @@ $(document).ready(function(){
             if (count < 0) {
                 clearInterval(counter);
                 // remove fetcher from DB once time is up
-                
-                myOrder.remove();
-                $(".timer").text('times up! order removed!');                
+                var rootRefReceivers = firebase.database().ref().child("receivers");
+                rootRefReceivers.remove();
+                var rootRefFetchers = firebase.database().ref().child("fetchers");
+                rootRefFetchers.remove();
+                $(".timer").text('times up! Please do not order anymore!');                
 
                 
             } else {

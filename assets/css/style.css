@@ -13,7 +13,7 @@ font-family: 'Monoton', cursive;
 */
 body{
     background-image: url("../images/abstract-art-attractive.jpg"); /* The image used */
-    background-color: #cccccc; /* Used if the image is unavailable */
+    background-color: #FFCD34; /* Used if the image is unavailable */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */
@@ -38,10 +38,14 @@ body{
     color: #FFCD34;
     font-family: 'Roboto', sans-serif;
 }
-.weatherback{
-    background-color: #39302A;
-    color: #FFCD34;
-    font-family: 'Roboto', sans-serif;
+
+.weather-background{
+    background-image: url("../images/abstract-art-attractive.jpg"); /* The image used */
+    background-color: #FFCD34; /* Used if the image is unavailable */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    color: #39302A;
 }
 .location{
     font-size: 24px;
@@ -54,15 +58,15 @@ body{
 }
 .weather{
     font-size: 22px;
-    color: #FFCD34;
 }
 .temperature{
     font-size: 24px;
-    color: #FFCD34;
 }
+
 #coffee-map {
     height: 500px;
     width: 40%;
+    color: #39302A;
 }
 
 .coffeeContainer{
