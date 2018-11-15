@@ -12,7 +12,12 @@ font-family: 'Roboto', sans-serif;
 font-family: 'Monoton', cursive;
 */
 body{
-    background-color: #FFCD34;
+    background-image: url("../images/abstract-art-attractive.jpg"); /* The image used */
+    background-color: #cccccc; /* Used if the image is unavailable */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    color: #39302A;
 }
 .navbar{
     background-color: #FFCD34;
@@ -28,31 +33,31 @@ body{
     width: 100px;
     height: 100px;
 }
-.weatherback{
+.container{
     background-color: #39302A;
-    opacity: 0.8;
+    color: #39302A;
     font-family: 'Roboto', sans-serif;
 }
-.container{
+.weatherback{
     background-color: #39302A;
     color: #FFCD34;
     font-family: 'Roboto', sans-serif;
 }
 .location{
-    font-size: 72px;
+    font-size: 24px;
     font-family:'Roboto', sans-serif;
     font-weight: bold; 
 }
 .display{
-    width: 40%;
-    height: 50%;
+    width: 50%;
+    height: 30%;
 }
 .weather{
-    font-size: 52px;
+    font-size: 22px;
     color: #FFCD34;
 }
 .temperature{
-    font-size: 82px;
+    font-size: 24px;
     color: #FFCD34;
 }
 #coffee-map {
@@ -60,16 +65,10 @@ body{
     width: 40%;
 }
 
-
-
-
 .coffeeContainer{
-    margin: 5px;
-    padding: 10px;
-    font-family: 'Monoton', cursive;
-    font-size: 30px;
-    background-color:#A7BCFF;
-
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #FFCD34;
 }
 
 .fetcher-button{
@@ -83,11 +82,8 @@ body{
 }
 
 .table{
-
-    background-color:#A7BCFF;
+    background-color:#FFCD34;
     color: #39302A;
-    margin: 60px;
-
 }
 .footer , .push{
     height: 100px;
@@ -97,3 +93,4 @@ body{
     color: #39302A;
     background-color: #FFCD34;
     border-top: 10px solid #39302A;
+}
