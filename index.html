@@ -37,6 +37,7 @@
     </head>
 
     <body>
+
         <!-- As a heading -->
         <nav class="navbar">
             <span class="navbar-brand mx-auto"><img src="assets/images/coffeeCup.png" class="imgNav"> Fetch</span>
@@ -96,58 +97,62 @@
             </div>
         </div>
 
-        <!--fetcher form display-->
+            
+<!--fetcher form display-->
+   
+<div class="row">
+        <form class="col-sm-6">
+            <div class="coffeeContainer">
+                <div class="form-group">
+                    <label for="coffee-fetcher">Coffee Fetcher Name</label>
+                    <input type="text" class="form-control" id="coffee-fetcher" placeholder="Fetcher Name">
+                </div>
 
-        <div class="row">
-            <form class="col-sm-6">
-                <div class="coffeeContainer">
-                    <div class="form-group">
-                        <label for="coffee-fetcher">Coffee Fetcher Name</label>
-                        <input type="text" class="form-control" id="coffee-fetcher" placeholder="Fetcher Name">
-                    </div>
                 <div class="form-group">
                     <label for="coffee-destination">Coffee Shop Destination</label>
                     <input type="text" class="form-control" id="coffee-destination" placeholder="Coffee Shop">
                 </div>
-                    <input class="btn btn-primary fetcher-button" type="submit" value="Submit">
+
+                <input class="btn btn-primary fetcher-button" type="submit" value="Submit">
+            </div>
+        </form>
+
+    <!--receiver form display-->   
+    
+        <form class="col-sm-6">
+            <div class="coffeeContainer">
+                <div class="form-group">
+                    <label for="coffee-receiver">Coffee Purchaser</label>
+                    <input type="text" class="form-control" id="coffee-receiver" placeholder="Name" >
                 </div>
-            </form>
-
-            <!--receiver form display-->   
-
-            <form class="col-sm-6">
-                <div class="coffeeContainer">
-                    <div class="form-group">
-                        <label for="coffee-receiver">Coffee Purchaser</label>
-                        <input type="text" class="form-control" id="coffee-receiver" placeholder="Name" >
-                    </div>
-                    <div class="form-group">
-                        <label for="coffee-order">Order and Instructions</label>
-                        <textarea class="form-control" id="coffee-order" placeholder="How do you like your coffee..." rows="3"></textarea>
-                    </div>
-                    <input class="btn btn-primary receiver-button" type="submit"  value="Submit">
+                <div class="form-group">
+                    <label for="coffee-order">Order and Instructions</label>
+                    <textarea class="form-control" id="coffee-order" placeholder="How do you like your coffee..." rows="3"></textarea>
                 </div>
-            </form>
-        </div>
+                <input class="btn btn-primary receiver-button" type="submit"  value="Submit">
+            </div>
+        </form>
+    </div>
+</div>
 
-        <!--timer field-->
-        <div class="row">
-            <p class="timer"></p>
-            <p class="end-requests"></p>
+    <!--timer field-->
+    <div class="row">
+        <p class="timer"></p>
+    <p class="end-requests"></p>
         <!-- Fetchers  -->
-            <div class="col-sm-12">
-                <table class="table fetchers">
-                    <thead>
-                        <tr>
-                            <th scope="col">Coffee Fetcher Name</th>
-                            <th scope="col">Coffee Shop Destination</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-                <!-- Receivers  -->
-                <table class="table receivers">
+        <div class="col-sm-12">
+            <table class="table fetchers">
+                <thead>
+                    <tr>
+                        <th scope="col">Coffee Fetcher Name</th>
+                        <th scope="col">Coffee Shop Destination</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        <!-- Receivers  -->
+        <table class="table receivers">
                     <thead>
                         <tr>
                             <th scope="col">Coffee Purchaser</th>                           
@@ -158,6 +163,15 @@
                     </tbody>
                 </table>
             </div>    
+    </div>    
+
+</div>
+
+            
+           
+                
+            </div>    
         </div>
+    
     </body>
 </html>

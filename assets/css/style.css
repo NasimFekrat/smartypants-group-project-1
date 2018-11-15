@@ -73,4 +73,12 @@ body{
     color: #39302A;
     margin: 60px;
 
+<<<<<<< HEAD
+=======
+}
+
+.timer{
+    background-color: red;
+    color:white;
+>>>>>>> master
 }
