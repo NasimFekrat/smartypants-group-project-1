@@ -126,7 +126,7 @@ $(document).ready(function(){
             return m + ":" + s;
         }
 
-        var count = 30; // 70
+        var count = 320; // 70
         var counter = setInterval(countdown, 1000);
 
         function countdown() {
@@ -142,7 +142,7 @@ $(document).ready(function(){
 
                 
             } else {
-                $(".timer").html(formatTime(count));
+                $(".timer").html("You have " + formatTime(count) + " to request your order!");
             }
         };
         countdown();
