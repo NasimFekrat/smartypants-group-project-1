@@ -227,6 +227,11 @@ $(document).ready(function(){
         google.maps.event.addListener(map, 'rightclick', function(event) {
             map.setCenter(event.latLng)
             clearResults(markers);
+            var newMarker = new google.maps.Marker({ //set a new flag icon wherever the center is moved to
+                position: event.latLng,
+                map: map,
+                icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+            });
 
             var request = { 
                 location: event.latLng, //instead of the default center, location will be the lat && lng coords returns on the rightclick event
@@ -235,20 +240,26 @@ $(document).ready(function(){
             };
             service.nearbySearch(request, callback);
         })
+
+        var myhalMarker = new google.maps.Marker({
+            position:{lat:43.660781,lng:-79.396785},
+            map: map,
+            icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+        });
+
     }
 
      function callback(results, status) {
          if(status == google.maps.places.PlacesServiceStatus.OK){ 
              for (var m = 0; m < results.length; m++){
-                 markers.push(createMarker(results[m])); // fill the markers array with objects, if the status of the results is OK
-             }
+                 markers.push(createMarker(results[m])); // fill the markers array with objects from createMarker, if the status of the results is OK
+             }   
          }
      }
 
-     
 
     function createMarker(place) { 
-         var marker = new google.maps.Marker({ //creates the actual markers on the map 
+         var marker = new google.maps.Marker({ //creates the actual markers for placement on the map 
              map: map,
              position: place.geometry.location
          });
@@ -284,6 +295,7 @@ $(document).ready(function(){
          }
          markers = [];
      }
+
 
     initialize(); //function called on page load
     
