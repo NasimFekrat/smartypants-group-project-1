@@ -242,12 +242,6 @@ $(document).ready(function(){
             service.nearbySearch(request, callback);
         })
 
-        var myhalMarker = new google.maps.Marker({
-            position:{lat:43.660781,lng:-79.396785},
-            map: map,
-            icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
-        });
-
     }
 
      function callback(results, status) {
@@ -288,6 +282,21 @@ $(document).ready(function(){
          });
          return marker;
     }
+
+    function createMyhalMarker(){ //function to set a unique marker for the myhal building at center of map
+
+        var myhalMarker = new google.maps.Marker({
+            position:{lat:43.660781,lng:-79.396785},
+            map: map,
+            icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png' //a flag, instead of the standard marker icon
+        });
+
+        google.maps.event.addListener(myhalMarker, 'click', function(){ //add a listener to this marker on creation so clicking on it will open an info bubble
+
+            infoBubble.setContent("Myhal Centre For Engineering</br> Innovation & Entrepreneruship, </br> 55 St. George St, Toronto ON"); //bubble hard-coded with name && address
+            infoBubble.open(map, this);
+        });
+    }
    
 
     function clearResults(markers) { //clears the markers array for re-populating with new markers when a new center is set
@@ -299,6 +308,7 @@ $(document).ready(function(){
 
 
     initialize(); //function called on page load
+    createMyhalMarker();
     
 }); //end of docready function
 
