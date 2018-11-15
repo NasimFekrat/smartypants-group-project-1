@@ -36,6 +36,7 @@
 
 
     </head>
+    <body>
         <!-- As a heading -->
         <nav class="navbar">
             <span class="navbar-brand mx-auto"><img src="assets/images/coffeeCup.png" class="imgNav"> Fetch</span>
@@ -78,96 +79,108 @@
             </a>
         </div>
 
-        <div class="container">
-            <!--weather display-->
-            <div class="row"> 
-                    </div> 
-                <div class="col-sm-12 rounded-circle mx-auto" id="coffee-map" ></div>
+        <!-- main application part -->
+        <div class="container my-5">
+            <div class="row p-4">
+                <div class="col-sm-7">
+                    <div class="row">
+                        <h3 class="col-sm-12 text-center p-3">Discover Coffee Houses Near You</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 rounded" id="coffee-map"></div>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <!--weather display-->
+                    <div class="row">
+                        <h3 class="col-sm-12 text-center p-3">The Weather Condition</h3>
+                    </div>
+                    <div class="row weather-background rounded ml-3">
+                        <figure class="col-sm-5 figure text-center">
+                            <img class="display figure-img img-fluid mt-3" alt="weather-icon">
+                            <figcaption class="figure-caption text-center weather"></figcaption>
+                        </figure>
+                        <div class="col-sm-7">
+                            <h4 class="location text-center pt-3"></h4>
+                            <h4 class="temperature text-center"></h4>
+                        </div>
+                    </div>
+                    <!--fetcher form display-->
+                    <div class="row">
+                        <h3 class="col-sm-12 text-center p-3">Discover Who Needs Coffee</h3>
+                    </div>
+                    <div class="row">
+                        <form class="col-sm-12 coffeeContainer font-weight-bold">
+                            <div class="form-group">
+                                <label for="coffee-fetcher">Coffee Fetcher Name</label>
+                                <input type="text" class="form-control" id="coffee-fetcher" placeholder="Fetcher Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="coffee-destination">Coffee Shop Destination</label>
+                                <input type="text" class="form-control" id="coffee-destination" placeholder="Coffee Shop">
+                            </div>
+                            <input class="btn fetcher-button" type="submit" value="Submit">
+                        </form>
+                    </div>
+                </div> 
             </div>
-            <div class="row rounded weatherapp">
-                <div class="col-sm-4"><img class="display"></div>
-                <div class="col-sm-8 my-3">
-                    <p class="location m-0 h5"></p>
-                    <p class="temperature m-0"></p>
-                    <p class="weather m-0"></p>
-                </div>
+            <div class="row">
+                <h3 class="col-sm-12 text-center p-3">Communication Hub</h1>
             </div>
-            
-<!--fetcher form display-->
-   
-<div class="row">
-        <form class="col-sm-6">
-            <div class="coffeeContainer">
-                <div class="form-group">
-                    <label for="coffee-fetcher">Coffee Fetcher Name</label>
-                    <input type="text" class="form-control" id="coffee-fetcher" placeholder="Fetcher Name">
-                </div>
-                <div class="form-group">
-                    <label for="coffee-destination">Coffee Shop Destination</label>
-                    <input type="text" class="form-control" id="coffee-destination" placeholder="Coffee Shop">
-                </div>
-                <input class="btn btn-primary fetcher-button" type="submit" value="Submit">
+            <!--timer field-->
+            <div class="row my-3">
+                <div class="col-sm-12 h3 text-center timer"></div>
             </div>
-        </form>
-
-    
-
-    <!--receiver form display-->   
-    
-        <form class="col-sm-6">
-            <div class="coffeeContainer">
-                <div class="form-group">
-                    <label for="coffee-receiver">Coffee Purchaser</label>
-                    <input type="text" class="form-control" id="coffee-receiver" placeholder="Name" >
+            <div class="row mt-5">
+                <!-- Fetchers  -->
+                <div class="col-sm-4">
+                    <table class="table fetchers">
+                        <thead>
+                            <tr>
+                                <th scope="col">Coffee Fetcher Name</th>
+                                <th scope="col">Coffee Shop Destination</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="form-group">
-                    <label for="coffee-order">Order and Instructions</label>
-                    <textarea class="form-control" id="coffee-order" placeholder="How do you like your coffee..." rows="3"></textarea>
-                </div>
-                <input class="btn btn-primary receiver-button" type="submit"  value="Submit">
+                <!--receiver form display-->
+                <form class="col-sm-4 coffeeContainer font-weight-bold">
+                    <div class="form-group">
+                        <label for="coffee-receiver">Coffee Purchaser</label>
+                        <input type="text" class="form-control" id="coffee-receiver" placeholder="Name" >
+                    </div>
+                    <div class="form-group">
+                        <label for="coffee-order">Order and Instructions</label>
+                        <textarea class="form-control" id="coffee-order" placeholder="How do you like your coffee..." rows="3"></textarea>
+                    </div>
+                    <input class="btn receiver-button" type="submit"  value="Submit">
+                </form>
+                <!-- Receivers  -->
+                <div class="col-sm-4">
+                    <table class="table receivers">
+                        <thead>
+                            <tr>
+                                <th scope="col">Coffee Purchaser</th>                           
+                                <th scope="col">Order and Instructions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>    
             </div>
-        </form>
-    </div>
-</div>
-
-    <!--timer field-->
-    <div class="row">
-        <p class="timer"></p>
-    <p class="end-requests"></p>
-        <!-- Fetchers  -->
-        <div class="col-sm-12">
-            <table class="table fetchers">
-                <thead>
-                    <tr>
-                        <th scope="col">Coffee Fetcher Name</th>
-                        <th scope="col">Coffee Shop Destination</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        <!-- Receivers  -->
-        <table class="table receivers">
-                    <thead>
-                        <tr>
-                            <th scope="col">Coffee Purchaser</th>                           
-                            <th scope="col">Order and Instructions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>    
-    </div>    
-
-</div>
-
-            
-           
-                
-            </div>    
+            <div class="push"></div>
         </div>
-    
+
+        <!-- Footer -->
+        <footer class="page-footer font-small pt-4 footer">
+            <!-- Copyright -->
+            <div class="footer-copyright h4 text-center m-0 p-4">Smarty Pants 2018©</div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
 
     </body>
 </html>
