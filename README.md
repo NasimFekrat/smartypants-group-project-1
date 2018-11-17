@@ -13,3 +13,9 @@
 * Provide location of nearby coffee shops
 * Provide local and up-to-date weather
 * Ability for participants to submit orders for pickup
+
+- - -
+
+### URL
+* You can use our application in following URL:
+    * https://nasimfekrat.github.io/smartypants-group-project-1/
