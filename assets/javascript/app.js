@@ -23,7 +23,6 @@ $(document).ready(function(){
     var inputCoffeeOrder;
     var inputDestination;
 
-
     // Button to add Coffee Fetchers
     $(".fetcher-button").on("click", function(event) {
 
@@ -45,7 +44,7 @@ $(document).ready(function(){
         // Uploads New Input data to the database
 
 
-        myOrder =  database.ref("fetchers").push(coffeeFetcherInputs);
+        database.ref("fetchers").push(coffeeFetcherInputs);
 
 
         $("#coffee-fetcher").val("");
@@ -95,9 +94,7 @@ $(document).ready(function(){
 
         var newRow = $("<tr>").append(
             $("<td>").text(inputCoffeeFetcher),
-            $("<td>").text(inputCoffeeReceiver),
-            $("<td>").text(inputDestination),
-            $("<td>").text(inputCoffeeOrder),
+            $("<td>").text(inputDestination)
         )
 
         $(".fetchers > tbody").append(newRow);
@@ -119,20 +116,6 @@ $(document).ready(function(){
         $(".receivers > tbody").append(newRow);
     });
 
-    database.ref("receivers").on("child_added", function(childSnapshot) {
-        console.log(childSnapshot.val());
-
-        inputCoffeeReceiver = childSnapshot.val().coffeeReceiver;
-        inputCoffeeOrder = childSnapshot.val().coffeeOrder;
-
-        var newRow = $("<tr>").append(
-            $("<td>").text(inputCoffeeReceiver),
-            $("<td>").text(inputCoffeeOrder),
-        )
-
-        $(".receivers > tbody").append(newRow);
-    });
-
     function timer(){
         //order submission countdown
         function formatTime(seconds) {
@@ -143,7 +126,7 @@ $(document).ready(function(){
             return m + ":" + s;
         }
 
-        var count = 320; // 70
+        var count = 300; // 70
         var counter = setInterval(countdown, 1000);
 
         function countdown() {
